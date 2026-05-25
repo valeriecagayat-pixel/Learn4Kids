@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastery Hub - Learn4Kids</title>
+    <script type="text/JavaScript" src="w.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Learn4Kids</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="index.html#about" class="nav-tab">About Us</a>
+      <a href="index.html#contacts" class="nav-tab">Contacts</a>
+    </div>
+    <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+  </nav>
+
+ <div class="back-btn-container">
+  <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+</div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+    <div class="sidebar-links">
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+      <a href="mastery.html" id="link-mastery">🏅 Mastery Hub</a>
+    </div>
+  </div>
+
+  <main class="topics-section" style="padding-top: 20px;">
+    <div class="topics-intro" style="text-align: center;">
+        <h2 class="title">🏆 Mastery Hub</h2>
+        <p class="description">Your journey to becoming an English Legend!</p>
+    </div>
+
+    <div style="max-width: 900px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; padding: 0 20px;">
+        
+        <div id="badge-phonics" class="skill-card" style="text-align: center; border-top: 8px solid var(--clr-purple); filter: grayscale(100%); opacity: 0.5;">
+            <div style="font-size: 50px;">🔊</div>
+            <h3 style="color: var(--clr-purple);">Sound Master</h3>
+            <p>Phonics</p>
+        </div>
+
+        <div id="badge-nouns" class="skill-card" style="text-align: center; border-top: 8px solid var(--clr-pink); filter: grayscale(100%); opacity: 0.5;">
+            <div style="font-size: 50px;">🧸</div>
+            <h3 style="color: var(--clr-pink);">Noun Hunter</h3>
+            <p>Nouns</p>
+        </div>
+
+        <div id="badge-pronouns" class="skill-card" style="text-align: center; border-top: 8px solid var(--clr-cyan); filter: grayscale(100%); opacity: 0.5;">
+            <div style="font-size: 50px;">🔄</div>
+            <h3 style="color: var(--clr-cyan);">Pronoun Ninja</h3>
+            <p>Pronouns</p>
+        </div>
+
+        <div id="badge-verbs" class="skill-card" style="text-align: center; border-top: 8px solid var(--clr-primary); filter: grayscale(100%); opacity: 0.5;">
+            <div style="font-size: 50px;">🏃‍♂️</div>
+            <h3 style="color: var(--clr-primary);">Action Hero</h3>
+            <p>Verbs</p>
+        </div>
+
+    </div>
+  </main>
+
+   <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+        
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="#contacts">📞 Contacts</a></li>
+          <li><a href="#">❓ FAQs</a></li>
+          <li><a href="#">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn4Kids - Ultimate Challenge Mode</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="w.js"></script>
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Learn4Kids</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="index.html#about" class="nav-tab">About Us</a>
+      <a href="index.html#contacts" class="nav-tab">Contacts</a>
+    </div>
+    <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+  </nav>
+
+ <div class="back-btn-container">
+  <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+</div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+    <div class="sidebar-links">
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+      <a href="mastery.html" id="link-mastery">🏅 Mastery Hub</a>
+    </div>
+  </div>
+
+ <main class="topics-section">
+    <div class="topics-intro">
+      <h2 class="title">⚔️ Grand Bubble & Sound Arenas ⚔️</h2>
+      <p class="description">Pop the letter bubbles to spell words, and tune your ears to unlock the 10 elite master medallions!</p>
+    </div>
+
+   <h3 style="text-align: center; font-size: 26px; color: var(--clr-pink); margin: 60px 0 20px 0;">🎵 Bubble Letter Scramble 🎵</h3>
+    <div class="big-boxes-layout">
+
+        <div class="skill-card"><h3>Nature</h3><p>Scramble: SDLUOC</p><input id="q0" placeholder="Answer"></div>
+        <div class="skill-card"><h3>Animals</h3><p>Scramble: REZBA</p><input id="q1" placeholder="Answer"></div>
+        <div class="skill-card"><h3>School</h3><p>Scramble: KSOOB</p><input id="q2" placeholder="Answer"></div>
+        <div class="skill-card"><h3>Food</h3><p>Scramble: AZZIP</p><input id="q3" placeholder="Answer"></div>
+        <div class="skill-card"><h3>Emotions</h3><p>Scramble: YPHAP</p><input id="q4" placeholder="Answer"></div>
+    </div>
+
+    <h3 style="text-align: center; font-size: 26px; color: var(--clr-pink); margin: 60px 0 20px 0;">🎵 Sound & Vision Phonics 🎵</h3>
+    <div class="big-boxes-layout">
+
+        <div class="skill-card"><img src="dog.jpg"><p>Listen: "Woof!"</p><button onclick="playAudio('dog')">Play</button></div>
+        <div class="skill-card"><img src="car.jpg"><p>Listen: "Beep!"</p><button onclick="playAudio('car')">Play</button></div>
+        <div class="skill-card"><img src="run.jpg"><p>Listen: "Tuk!"</p><button onclick="playAudio('run')">Play</button></div>
+        <div class="skill-card"><img src="king.jpg"><p>Listen: "Hail!"</p><button onclick="playAudio('king')">Play</button></div>
+        <div class="skill-card"><img src="sun.jpg"><p>Listen: "Birds!"</p><button onclick="playAudio('sun')">Play</button></div>
+    </div>
+
+    <h3 style="text-align: center; font-size: 26px; color: var(--clr-pink); margin: 60px 0 20px 0;">🎵 Word Recognition 🎵</h3>
+    <div class="big-boxes-layout">
+
+        <div class="skill-card"><img src="apple.jpg"><h3>ELPPA</h3><input id="s3-0"></div>
+        <div class="skill-card"><img src="bird.jpg"><h3>DRIB</h3><input id="s3-1"></div>
+        <div class="skill-card"><img src="frog.jpg"><h3>GORF</h3><input id="s3-2"></div>
+        <div class="skill-card"><img src="school.jpg"><h3>LOOHCS</h3><input id="s3-3"></div>
+        <div class="skill-card"><img src="fish.jpg"><h3>HIFS</h3><input id="s3-4"></div>
+    </div>
+
+    <h3 style="text-align: center; font-size: 26px; color: var(--clr-pink); margin: 60px 0 20px 0;">🎤 Pinoy Henyo Audio 🎤</h3>
+    <div class="big-boxes-layout">
+      
+        <div class="skill-card"><p>I am red/crunchy.</p><button onclick="playAudio('apple')">Play</button><select><option>Apple</option></select></div>
+        <div class="skill-card"><p>I have wings.</p><button onclick="playAudio('bird')">Play</button><select><option>Bird</option></select></div>
+        <div class="skill-card"><p>I jump on pads.</p><button onclick="playAudio('frog')">Play</button><select><option>Frog</option></select></div>
+        <div class="skill-card"><p>I am for study.</p><button onclick="playAudio('school')">Play</button><select><option>School</option></select></div>
+        <div class="skill-card"><p>I blow bubbles.</p><button onclick="playAudio('fish')">Play</button><select><option>Fish</option></select></div>
+    </div>
+  </main>
+
+   <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+        
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="#contacts">📞 Contacts</a></li>
+          <li><a href="#">❓ FAQs</a></li>
+          <li><a href="#">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+    </footer>
+
+</body>
+</html>

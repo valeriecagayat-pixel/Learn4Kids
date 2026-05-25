@@ -1,0 +1,934 @@
+
+
+/* ========================================================
+   1. CORE SETUP & GLOBAL RESETS
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+ font-family: 'Fredoka', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  background: #FAF7FF;
+  color: #3C3352;
+  overflow-x: hidden; 
+}
+
+/* Color palette constants for theme consistency */
+:root {
+  --clr-primary: #A55EEA;          
+  --clr-purple: #B983FF;           
+  --clr-pink: #FDA7DF;             
+  --clr-yellow: #FFDF00;           
+  --clr-cyan: #74B9FF;             
+  --clr-kid-bg: #F1EAFF;           
+  --clr-kid-card-bg: #FFFFFF;      
+  --clr-kid-card-border: #E4D4FF;  
+  --clr-kid-text-muted: #6D5D83;   
+  --transition-arcade: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ========================================================
+   2. NAVBAR & SIDEBAR COMPONENT
+   ======================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 15px 4%;
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--clr-kid-card-border);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Rainbow text effect for logo */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(to right, #FF8787, #FFC312, #12CBC4, #ED4C67, #A55EEA);
+  background-size: 100% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 2px rgba(165, 94, 234, 0.2));
+}
+
+.nav-links { 
+  display: flex; 
+  gap: 30px; 
+}
+
+.nav-tab {
+  color: #6D5D83;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-tab:hover { 
+  color: var(--clr-primary); 
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  color: var(--clr-primary);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Sidebar drawer styling */
+.sidebar-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(60, 51, 82, 0.4);
+  display: none; 
+  z-index: 9998;
+}
+
+.sidebar-overlay.open { 
+  display: block; 
+}
+
+.sidebar {
+  position: fixed;
+  top: 0; right: -300px; width: 280px; height: 100vh;
+  background-color: #FFFFFF;
+  border-left: 2px solid var(--clr-kid-card-border);
+  box-shadow: -5px 0 25px rgba(165, 94, 234, 0.1);
+  z-index: 9999;
+  padding: 25px 20px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px;
+  transition: right 0.3s ease-in-out;
+}
+
+.sidebar.open { 
+  right: 0; 
+}
+
+.close-sidebar-btn {
+  align-self: flex-end; 
+  background: none; 
+  border: none;
+  color: #FF6B6B; 
+  font-size: 26px; 
+  cursor: pointer; 
+  font-weight: bold;
+}
+
+.sidebar-links { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+
+.sidebar-links a {
+  color: #6D5D83; 
+  font-size: 18px; 
+  text-decoration: none; 
+  font-weight: 600;
+  padding: 14px 16px; 
+  border-radius: 16px; 
+  background: #FDFBFF;
+  border: 1px solid var(--clr-kid-card-border); 
+  transition: all 0.25s ease; 
+}
+
+.sidebar-links a:hover, .sidebar-links a.active {
+  color: #ffffff; 
+  background: var(--clr-primary); 
+  border-color: var(--clr-primary); 
+}
+
+/* ========================================================
+   3. LANDING HERO BANNER
+   ======================================================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #FFE8E8, #E8F0FE, #F1EAFF);
+  min-height: 75vh;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #55496A;
+  margin: 20px 0 35px 0;
+  line-height: 1.6;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 85%;
+  height: auto;
+  animation: floatMascot 4s ease-in-out infinite;
+  margin-left: 60px;
+}
+
+@keyframes floatMascot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.shining-text, .topics-intro .title {
+  font-size: 46px !important;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(to right, #FF6B6B, #FF9F43, #10AC84, #54A0FF, #9B5DE5);
+  background-size: 100% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* ========================================================
+   4. MISSION, VISION, & TEAM SECTION (UPDATED PASTEL)
+   ======================================================== */
+.about-section, .team-section {
+  padding: 80px 8%;
+  text-align: center;
+  background: #F7F3FF; 
+}
+
+.about-intro h2, .team-section h2 {
+  font-size: 38px;
+  margin-bottom: 15px;
+  font-weight: 800;
+  color: #3C3352;
+}
+
+.mv-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.mv-box {
+  flex: 1;
+  background: #FFFFFF; 
+  padding: 35px;
+  border-radius: 24px;
+  border: 3px solid var(--clr-kid-card-border); 
+  text-align: left;
+  box-shadow: 0 10px 0px #3C3352; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mv-box:hover {
+  transform: translateY(3px);
+  box-shadow: 0 7px 0px #3C3352;
+}
+
+.mv-box h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: var(--clr-primary); 
+  font-weight: 800;
+}
+
+.mv-box p {
+  color: var(--clr-kid-text-muted);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 40px;
+}
+
+.member {
+  background: #FFFFFF;
+  padding: 30px 20px;
+  border-radius: 24px;
+  width: 220px;
+  border: 3px solid var(--clr-kid-card-border);
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(165, 94, 234, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.member:hover {
+  transform: translateY(-5px);
+}
+
+.circle-frame {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important; 
+  object-fit: cover !important; 
+  margin: 0 auto 15px auto !important;
+  display: block !important;
+  border: 4px solid var(--clr-cyan) !important; 
+  box-shadow: 0 4px 10px rgba(116, 185, 255, 0.3);
+}
+
+.team-container .member:nth-child(2n) .circle-frame {
+  border-color: var(--clr-pink) !important;
+  box-shadow: 0 4px 10px rgba(252, 167, 223, 0.4);
+}
+
+.team-container .member:nth-child(3n) .circle-frame {
+  border-color: var(--clr-yellow) !important;
+  box-shadow: 0 4px 10px rgba(255, 223, 0, 0.3);
+}
+
+.member h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #3C3352;
+}
+
+.member p {
+  font-size: 14px;
+  color: var(--clr-kid-text-muted);
+}
+
+/* ========================================================
+   5. UNIFIED 2x2 ARCADE GRID LAYOUT
+   ======================================================== */
+.topics-section {
+  padding: 60px 20px;
+  background: var(--clr-kid-bg); 
+  min-height: 100vh;
+}
+
+.topics-intro { 
+  text-align: center; 
+  margin-bottom: 50px; 
+}
+
+.topics-intro .description {
+  color: var(--clr-kid-text-muted);
+  font-size: 20px;
+}
+
+.skills-grid, .big-boxes-layout {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; 
+  gap: 30px !important;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  width: 100%;
+}
+
+.skill-card {
+  background: var(--clr-kid-card-bg) !important;
+  border-radius: 28px !important;
+  padding: 35px 30px !important; 
+  text-align: left !important; 
+  position: relative !important;
+  border: 3px solid var(--clr-kid-card-border) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important; 
+  min-height: 420px !important; 
+  box-shadow: 0 10px 20px rgba(165, 94, 234, 0.04);
+}
+
+/* ========================================================
+   6. MODULE VARIANT COLOURS & BADGES
+   ======================================================== */
+/* Listening variant style */
+.listening-arcade { border-color: #74B9FF !important; background-color: #F0F7FF !important; }
+.listening-badge { background: #74B9FF !important; color: #FFFFFF !important; }
+
+/* Speaking variant style */
+.speaking-arcade { border-color: #FF9F87 !important; background-color: #FFF2F0 !important; }
+.speaking-badge { background: #FF9F87 !important; color: #FFFFFF !important; }
+
+/* Reading variant style */
+.reading-arcade { border-color: #FFC312 !important; background-color: #FFFDF0 !important; }
+.reading-badge { background: #FFC312 !important; color: #3C3352 !important; }
+
+/* Writing variant style */
+.writing-arcade { border-color: #1DD1A1 !important; background-color: #F0FFF9 !important; }
+.writing-badge { background: #1DD1A1 !important; color: #FFFFFF !important; }
+
+/* Fallback sequential child mapping */
+.big-boxes-layout div:nth-child(4n+1) { border-color: #74B9FF !important; background-color: #F0F7FF !important; }
+.big-boxes-layout div:nth-child(4n+1) .category { background: #74B9FF !important; color: #FFFFFF !important; }
+
+.big-boxes-layout div:nth-child(4n+2) { border-color: #FF9F87 !important; background-color: #FFF2F0 !important; }
+.big-boxes-layout div:nth-child(4n+2) .category { background: #FF9F87 !important; color: #FFFFFF !important; }
+
+.big-boxes-layout div:nth-child(4n+3) { border-color: #FFC312 !important; background-color: #FFFDF0 !important; }
+.big-boxes-layout div:nth-child(4n+3) .category { background: #FFC312 !important; color: #3C3352 !important; }
+
+.big-boxes-layout div:nth-child(4n+4) { border-color: #1DD1A1 !important; background-color: #F0FFF9 !important; }
+.big-boxes-layout div:nth-child(4n+4) .category { background: #1DD1A1 !important; color: #FFFFFF !important; }
+
+.card-badge, .skill-card .category {
+  position: absolute !important; top: -15px !important; left: 30px !important; 
+  padding: 8px 22px !important; border-radius: 50px !important;
+  font-size: 14px !important; font-weight: 800 !important;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+  z-index: 10;
+}
+
+.skill-card h3, .module-name {
+  font-size: 24px !important;
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+  color: #3C3352 !important; 
+  font-weight: 700 !important;
+}
+
+.game-instruction, .module-description {
+  font-size: 15px !important;
+  color: var(--clr-kid-text-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 15px !important;
+}
+
+.module-description b {
+  color: var(--clr-primary) !important; 
+  background: rgba(165, 94, 234, 0.08) !important;
+  padding: 2px 8px !important; 
+  border-radius: 8px !important;
+}
+
+/* ========================================================
+   7. MINI-GAME MODULE WRAPPER SCREENS
+   ======================================================== */
+.mini-game-box {
+  background: #FFFFFF !important; 
+  border-radius: 20px !important; 
+  padding: 18px !important; 
+  margin-bottom: 20px !important; 
+  border: 2px solid var(--clr-kid-card-border) !important;
+  flex-grow: 1 !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  box-shadow: inset 0 2px 5px rgba(165, 94, 234, 0.05) !important;
+}
+
+.game-score { 
+  font-size: 13px !important; 
+  text-align: right !important; 
+  color: #FF9F43 !important; 
+  font-weight: bold !important; 
+}
+
+.word-display { 
+  text-align: center !important; 
+  font-size: 52px !important; 
+  font-weight: 700 !important; 
+  margin: 15px 0 !important; 
+  color: #3C3352 !important;
+  text-shadow: 0 4px 0px rgba(165, 94, 234, 0.1) !important; 
+}
+
+.game-feedback { 
+  font-size: 14px !important;
+  text-align: center !important;
+  color: #8A7B9F !important;
+  font-weight: 600 !important;
+}
+
+/* ========================================================
+   8. GAME INTERACTIVE BUTTONS & CONTROLLERS
+   ======================================================== */
+.game-controls, .choices-speak { 
+  display: flex !important; 
+  gap: 12px !important; 
+  margin-top: 10px !important;
+}
+
+.game-controls-vertical { 
+  display: flex !important; 
+  flex-direction: column !important; 
+  gap: 12px !important; 
+  margin-top: 10px !important;
+}
+
+.game-btn {
+  flex: 1 !important; 
+  padding: 12px 16px !important; 
+  background: #E8F0FE !important; 
+  border: none !important;
+  color: #4A5568 !important; 
+  border-radius: 16px !important; 
+  cursor: pointer !important; 
+  font-weight: 700 !important; 
+  font-size: 14px !important;
+  box-shadow: 0 5px 0px #C5D6F7 !important; 
+  transition: var(--transition-arcade) !important;
+}
+
+.game-btn:hover { 
+  background: #DCE7FC !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 7px 0px #C5D6F7 !important;
+}
+
+.game-btn:active {
+  transform: translateY(4px) !important;
+  box-shadow: 0 1px 0px #C5D6F7 !important;
+}
+
+.btn-action-green { 
+  background: #1DD1A1 !important; 
+  color: white !important;
+  box-shadow: 0 5px 0px #10AC84 !important; 
+}
+.btn-action-green:hover { background: #10AC84 !important; box-shadow: 0 7px 0px #10AC84 !important; }
+.btn-action-green:active { box-shadow: 0 1px 0px #10AC84 !important; }
+
+.btn-action-red { 
+  background: #FF6B6B !important; 
+  color: white !important;
+  box-shadow: 0 5px 0px #EE5253 !important; 
+}
+.btn-action-red:hover { background: #EE5253 !important; box-shadow: 0 7px 0px #EE5253 !important; }
+.btn-action-red:active { box-shadow: 0 1px 0px #EE5253 !important; }
+
+.btn-responsive, .start-learning-btn {
+  display: inline-block !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  background: var(--clr-primary) !important; 
+  color: #FFFFFF !important; 
+  border: none !important; 
+  padding: 14px 24px !important;
+  border-radius: 50px !important; 
+  font-size: 16px !important; 
+  font-weight: 800 !important; 
+  cursor: pointer !important; 
+  box-shadow: 0 6px 0px #8442C2 !important; 
+  transition: var(--transition-arcade) !important;
+  margin-top: auto !important; 
+  width: 100% !important;
+}
+
+.btn-responsive:hover, .start-learning-btn:hover { 
+  background: #B379DD !important; 
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 0px #8442C2 !important;
+}
+
+.btn-responsive:active, .start-learning-btn:active {
+  transform: translateY(5px) !important;
+  box-shadow: 0 1px 0px #8442C2 !important;
+}
+
+/* ========================================================
+   9. SITE FOOTER
+   ======================================================== */
+.site-footer {
+  background: #ffffff;
+  padding: 40px 8% 20px 8%;
+  border-top: 2px solid var(--clr-kid-card-border);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footer-brand p {
+  color: var(--clr-kid-text-muted);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-top: 8px;
+}
+
+.footer-links h5 {
+  color: #3C3352;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.footer-links a {
+  color: #8A7B9F;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--clr-primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #A397B4;
+  font-size: 13px;
+}
+
+/* ========================================================
+   10. CHALLENGE MODE LAYOUTS & MINI-GAMES
+   ======================================================== */
+.super-size-card {
+  min-height: auto !important;
+  padding: 40px 30px !important;
+  border-radius: 24px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 12px 24px rgba(60, 51, 82, 0.08) !important;
+}
+
+.game-display-zone {
+  background: #FAF7FF;
+  border: 3px dashed #B983FF;
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.bubble-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  min-height: 60px;
+}
+
+.letter-bubble {
+  background: radial-gradient(circle at 30% 30%, #E3E9FF, #74B9FF);
+  color: white;
+  border: 3px solid #54A0FF;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 0 #2E86DE, inset -4px -4px 8px rgba(0,0,0,0.15);
+  transition: all 0.1s ease;
+}
+
+.letter-bubble:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #2E86DE;
+}
+
+.letter-bubble.used {
+  background: #DFDCE6;
+  border-color: #C4C1CC;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.answer-bar {
+  background: white;
+  border: 3px solid #FAF7FF;
+  border-radius: 12px;
+  min-height: 50px;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: #3C3352;
+  text-transform: uppercase;
+}
+
+.big-challenge-img {
+  width: 100%;
+  max-width: 280px;
+  height: 180px;
+  object-fit: contain;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #F1EAFF;
+  margin: 0 auto 15px auto;
+  display: block;
+}
+
+.audio-letter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* ========================================================
+   11. BACK BUTTON COMPONENT (3D ARCADE STYLE)
+   ======================================================== */
+.back-btn-container {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  
+}
+
+.back-btn, .module-btn{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--clr-purple) !important; 
+  color: #322e2e !important;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 0px #9059D4 !important; 
+  transition: var(--transition-arcade);
+}
+
+.back-btn, .module-btn:hover {
+  background: #A366FF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px #9059D4 !important;
+}
+
+.back-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0px #9059D4 !important;
+}
+
+/* ========================================================
+   12. LISTENING ADVENTURE CUSTOM STYLES
+   ======================================================== */
+
+.listening-adventure-layout {
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.listening-page-card {
+  background: var(--clr-kid-card-bg);
+  border-radius: 28px;
+  padding: 40px;
+  border: 3px solid var(--clr-kid-card-border);
+  box-shadow: 0 10px 20px rgba(165, 94, 234, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.border-purple { border-left: 12px solid var(--clr-purple); }
+.border-pink { border-left: 12px solid var(--clr-pink); }
+.border-cyan { border-left: 12px solid var(--clr-cyan); }
+.border-yellow { border-left: 12px solid var(--clr-yellow); }
+.border-primary { border-left: 12px solid var(--clr-primary); }
+.border-green { border-left: 12px solid #1DD1A1; }
+
+.listening-title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.listening-text {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--clr-kid-text-muted);
+}
+
+.listening-img {
+  width: 70%;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  margin-left: 90px;
+  object-fit: cover;
+}
+
+
+/* ========================================================
+   13. SPEAKER BUTTON STYLES
+   ======================================================== */
+.speaker-btn {
+    background: #E4D4FF;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+.speaker-btn:hover {
+    background: var(--clr-primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.tracing-canvas {
+    width: 100%;   
+    max-width: 800px;  
+    height: 300px;  
+    border: 3px dashed #dcdde1;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    touch-action: none;
+    cursor: crosshair;
+    display: block;
+    margin: 20px auto;
+}
+
+.game-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.tracing-canvas {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    border: 3px dashed #dcdde1;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    touch-action: none;
+    cursor: crosshair;
+    display: block;
+    margin: 15px auto;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.color-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover { transform: scale(1.2); }
+
+
+/* ========================================================
+   14. CHALLENGE ARENA GRID LAYOUT
+   ======================================================== */
+
+/* Main container na nag-aayos sa lahat ng cards */
+.big-boxes-layout {
+    display: grid;
+    /* Gagawa ng columns na awtomatikong mag-aadjust (min 300px width) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Para hindi sobrang lapad sa malaking screen */
+}
+
+/* Base style para sa bawat quest card */
+.skill-card {
+    background: var(--clr-kid-card-bg);
+    border: 3px solid var(--clr-kid-card-border);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(165, 94, 234, 0.2);
+}
+
+/* Para sa loob ng bawat quest card (yung input fields) */
+.skill-card ul {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.skill-card li {
+    margin: 10px 0;
+}
+
+.skill-card input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #E4D4FF;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.skill-card button {
+    background: var(--clr-primary);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.skill-card button:hover {
+    background: var(--clr-purple);
+}
+
+/* ========================================================
+   15. MEDIA QUERIES (MOBILE RESPONSIVENESS MATRIX)
+   ======================================================== */
+@media (max-width: 900px) {
+  .skills-grid, .big-boxes-layout, .mv-container { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; gap: 35px !important; }
+  .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+  .hero-right { margin-top: 40px; }
+  .team-container { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .skill-card { padding: 30px 20px !important; min-height: auto !important; }
+  .word-display { font-size: 42px !important; } 
+  .about-intro h2, .team-section h2 { font-size: 28px; }
+}

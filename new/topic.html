@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn4Kids - Adventure Zone</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="w.js"></script>
+</head>
+<body>
+
+ <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="index.html#about" class="nav-tab">About Us</a>
+      <a href="index.html#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()">
+      ☰
+    </button>
+  </nav>
+
+  <div class="back-btn-container">
+  <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+</div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+    
+    <div class="sidebar-links">
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+      <a href="mastery.html" id="link-mastery">🏆 Mastery Hub</a>
+    </div>
+  </div>
+
+  <main class="topics-section">
+    <div class="topics-intro">
+      <h1 class="shining-text">The Grand Adventure Map</h1>
+      <p class="hero-sub">All realms are unlocked! Choose a challenge, answer 5 questions, and claim victory!</p>
+    </div>
+
+    <div class="skills-grid">
+      
+      <div class="skill-card listening-arcade">
+        <div class="card-badge listening-badge">🎧 Sound Realm</div>
+        <h3>Rhyme Detective</h3>
+        <p class="game-instruction">Find the word that **rhymes** with the target sound!</p>
+        
+        <div class="mini-game-box">
+          <div class="game-score">Score: <span id="score-listen">0</span>/5</div>
+          <div class="word-display" id="target-listen">---</div>
+          <div class="game-controls-vertical" id="choices-listen">
+            </div>
+          <div class="game-feedback" id="feedback-listen">Ready to listen?</div>
+        </div>
+        <button class="btn-responsive btn-listen" id="btn-start-listen" onclick="startListeningGame()">Start Quest ➔</button>
+      </div>
+
+      <div class="skill-card speaking-arcade">
+        <div class="card-badge speaking-badge">🗣️ Voice Realm</div>
+        <h3>Syllable Clapper</h3>
+        <p class="game-instruction">Clap the word out! **How many syllables** does it have?</p>
+        
+        <div class="mini-game-box">
+          <div class="game-score">Score: <span id="score-speak">0</span>/5</div>
+          <div class="word-display" id="target-speak">---</div>
+          <div class="game-controls" id="choices-speak">
+            </div>
+          <div class="game-feedback" id="feedback-speak">Ready to speak?</div>
+        </div>
+        <button class="btn-responsive btn-speak" id="btn-start-speak" onclick="startSpeakingGame()">Start Quest ➔</button>
+      </div>
+
+      <div class="skill-card reading-arcade">
+        <div class="card-badge reading-badge">📖 Word Realm</div>
+        <h3>Noun Hunter</h3>
+        <p class="game-instruction">Look closely! Is the word displayed a **Noun**?</p>
+        
+        <div class="mini-game-box">
+          <div class="game-score">Score: <span id="score-read">0</span>/5</div>
+          <div class="word-display" id="target-read">---</div>
+          <div class="game-controls" id="choices-read">
+            <button class="game-btn btn-action-green" onclick="checkReadingAnswer(true)">Is a Noun! 🟢</button>
+            <button class="game-btn btn-action-red" onclick="checkReadingAnswer(false)">Not a Noun! 🔴</button>
+          </div>
+          <div class="game-feedback" id="feedback-read">Ready to read?</div>
+        </div>
+        <button class="btn-responsive btn-read" id="btn-start-read" onclick="startReadingGame()">Start Quest ➔</button>
+      </div>
+
+      <div class="skill-card writing-arcade">
+        <div class="card-badge writing-badge">✍️ Craft Realm</div>
+        <h3>Plural Wizard</h3>
+        <p class="game-instruction">Choose the correct **plural spelling** for the word!</p>
+        
+        <div class="mini-game-box">
+          <div class="game-score">Score: <span id="score-write">0</span>/5</div>
+          <div class="word-display" id="target-write">---</div>
+          <div class="game-controls-vertical" id="choices-write">
+            </div>
+          <div class="game-feedback" id="feedback-write">Ready to spell?</div>
+        </div>
+        <button class="btn-responsive btn-write" id="btn-start-write" onclick="startWritingGame()">Start Quest ➔</button>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 60px; margin-bottom: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <p class="hero-sub" style="margin: 0;">Want to review the dynamic logic of grammar realms?</p>
+      <a href="lesson.html" class="btn-responsive" style="text-decoration: none; display: inline-block; background: linear-gradient(135deg, #ff9f43, #ff5252); box-shadow: 0 4px 15px rgba(255, 82, 82, 0.4);">
+        📚 Go to Study Library ➔
+      </a>
+    </div>
+
+  </main>
+  <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+        
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="#contacts">📞 Contacts</a></li>
+          <li><a href="#">❓ FAQs</a></li>
+          <li><a href="#">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
