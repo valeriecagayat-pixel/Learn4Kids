@@ -150,7 +150,7 @@ body {
   transition: all 0.25s ease; 
 }
 
-.sidebar-links a:hover, .sidebar-links a.active {
+.sidebar-links a:hover {
   color: #ffffff; 
   background: var(--clr-primary); 
   border-color: var(--clr-primary); 

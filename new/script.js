@@ -74,7 +74,7 @@ function loadListeningQuestion() {
   let choicesContainer = document.getElementById('choices-listen');
   choicesContainer.innerHTML = "";
   q.choices.forEach(choice => {
-    choicesContainer.innerHTML += <button class="game-btn" onclick="submitListenAnswer('${choice}')">${choice}</button>;
+    choicesContainer.innerHTML += `<button class="game-btn" onclick="submitListenAnswer('${choice}')">${choice}</button>`;
   });
 }
 
@@ -157,7 +157,7 @@ function submitSpeakAnswer(num) {
 
 
 /* ========================================================
-   4. READING GAME LOGIC (Noun Hunt)
+   4. READING GAME LOGIC (Noun Hunt Options)
    ======================================================== */
 const readingQuestions = [
   { word: "🦅 EAGLE", isNoun: true },
@@ -253,7 +253,7 @@ function loadWritingQuestion() {
   let container = document.getElementById('choices-write');
   container.innerHTML = "";
   q.choices.forEach(choice => {
-    container.innerHTML += <button class="game-btn" onclick="submitWriteAnswer('${choice}')">${choice}</button>;
+    container.innerHTML += `<button class="game-btn" onclick="submitWriteAnswer('${choice}')">${choice}</button>`;
   });
 }
 
@@ -291,6 +291,7 @@ function initScrambleGame(idx) {
   activeAnswers[idx] = ""; 
   
   const zone = document.getElementById(`scramble-zone-${idx}`);
+  if (!zone) return;
   
   let html = `
     <div class="answer-bar" id="scramble-ans-${idx}">&nbsp;</div>
@@ -298,7 +299,7 @@ function initScrambleGame(idx) {
   `;
   
   q.scrambled.forEach((letter, letterIdx) => {
-    html += <button class="letter-bubble" id="bubble-${idx}-${letterIdx}" onclick="selectBubble(${idx}, ${letterIdx}, '${letter}')">${letter}</button>;
+    html += `<button class="letter-bubble" id="bubble-${idx}-${letterIdx}" onclick="selectBubble(${idx}, ${letterIdx}, '${letter}')">${letter}</button>`;
   });
   
   html += `
@@ -384,7 +385,6 @@ const audioQuestions = [
   }
 ];
 
-// AUDIO SEPARATION CONTROLLER (Text-To-Speech API)
 function speakSentence(sentenceText) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel(); 
@@ -410,6 +410,7 @@ function speakWord(wordText) {
 function initAudioGame(idx) {
   const q = audioQuestions[idx];
   const zone = document.getElementById(`audio-zone-${idx}`);
+  if (!zone) return;
   
   let html = `
     <img src="${q.image}" alt="${q.word}" class="big-challenge-img">
@@ -451,26 +452,9 @@ function checkAudioAnswer(idx, selectedChoice) {
 
 
 /* ========================================================
-   12. PAGE INITIALIZER (Auto-load games base sa page)
-   ======================================================== */
-window.addEventListener('DOMContentLoaded', () => {
-    // Para sa Scramble Challenge (Halimbawa: 5 items)
-    for(let i = 0; i < 5; i++) {
-        if(document.getElementById(`scramble-zone-${i}`)) {
-            initScrambleGame(i);
-        }
-        // Para sa Audio/Phonics Challenge
-        if(document.getElementById(`audio-zone-${i}`)) {
-            initAudioGame(i);
-        }
-    }
-});
-
-/* ========================================================
-   VOICE RECOGNITION (Speaking Task for Kids)
+   8. VOICE RECOGNITION (Speaking Task for Kids)
    ======================================================== */
 function startSpeakingTask(targetWord, elementId) {
-    // Check if the browser supports the Web Speech API
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     
     if (!SpeechRecognition) {
@@ -481,16 +465,14 @@ function startSpeakingTask(targetWord, elementId) {
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
     const feedbackElement = document.getElementById(elementId);
-     if (!feedbackElement) return;
-
-    // Initial feedback to show the app is listening
+    if (!feedbackElement) return;
+    
     feedbackElement.innerText = "Listening... say: " + targetWord;
 
     recognition.onresult = function(event) {
         const spokenWord = event.results[0][0].transcript.trim().toLowerCase();
         const target = targetWord.toLowerCase();
         
-        // Check if the spoken word includes the target word for better accuracy
         if (spokenWord.includes(target)) {
             feedbackElement.innerHTML = `You said: <b>${spokenWord}</b><br>🎉 Excellent! 100% Correct!`;
         } else {
@@ -502,26 +484,20 @@ function startSpeakingTask(targetWord, elementId) {
         feedbackElement.innerText = "I didn't hear you! Please try again.";
     };
 
-    // Start the microphone
     recognition.start();
 }
 
 /* ========================================================
-   VOICE WORKSHOP LOGIC (Record & Playback)
+   9. VOICE WORKSHOP LOGIC (Record & Playback)
    ======================================================== */
 let mediaRecorders = {}; 
 let audioChunksMap = {}; 
 
-/**
- * toggleRecording:
- * @param {number} idx 
- */
 async function toggleRecording(idx) {
     const btnRecord = document.getElementById(`btn-record-${idx}`);
     const btnPlay = document.getElementById(`btn-play-${idx}`);
     const status = document.getElementById(`status-record-${idx}`);
 
-    // KUNG NAGRE-RECORD NA: I-stop natin
     if (mediaRecorders[idx] && mediaRecorders[idx].state === "recording") {
         mediaRecorders[idx].stop();
         btnRecord.innerHTML = "🎤 Record";
@@ -534,7 +510,7 @@ async function toggleRecording(idx) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorders[idx] = new MediaRecorder(stream);
-        audioChunksMap[idx] = []; // Reset storage para sa workshop na ito
+        audioChunksMap[idx] = []; 
 
         mediaRecorders[idx].ondataavailable = (event) => {
             audioChunksMap[idx].push(event.data);
@@ -551,10 +527,6 @@ async function toggleRecording(idx) {
     }
 }
 
-/**
- * playRecording: 
- * @param {number} idx 
- */
 function playRecording(idx) {
     if (!audioChunksMap[idx] || audioChunksMap[idx].length === 0) return;
     
@@ -565,7 +537,7 @@ function playRecording(idx) {
 }
 
 /* ========================================================
-   READING MODULE LOGIC (Noun Hunt)
+   10. READING MODULE LOGIC (Noun Hunt Sentences)
    ======================================================== */
 const nounLevels = [
     { text: ["The", "cat", "is", "on", "the", "mat"], nouns: ["cat", "mat"] },
@@ -578,14 +550,13 @@ const nounLevels = [
 let currentLevel = 0;
 let clickedNouns = 0;
 
-// Initialize the game when the page loads
-window.addEventListener('DOMContentLoaded', loadNounHunt);
-
 function loadNounHunt() {
     const container = document.getElementById('noun-hunt-container');
     const feedback = document.getElementById('read-feedback');
     const title = document.getElementById('level-title');
     const nextBtn = document.getElementById('btn-next');
+    
+    if (!container || !feedback || !title || !nextBtn) return;
     
     container.innerHTML = "";
     feedback.innerText = "Find the nouns!";
@@ -622,35 +593,30 @@ function loadNounHunt() {
 
 function nextLevel() {
     currentLevel++;
+    const gameZone = document.getElementById('game-zone');
+    if (!gameZone) return;
     
     if (currentLevel < nounLevels.length) {
         loadNounHunt();
         
-        const gameZone = document.getElementById('game-zone');
         const allBorderClasses = ['border-purple', 'border-pink', 'border-cyan', 'border-yellow', 'border-green'];
-        
         gameZone.classList.remove(...allBorderClasses);
         const newColor = allBorderClasses[currentLevel % allBorderClasses.length];
         gameZone.classList.add(newColor);
         
     } else {
-        document.getElementById('game-zone').innerHTML = `
+        gameZone.innerHTML = `
             <div style="text-align: center; padding: 40px;">
-                <><h2>🏆 Reading Champion!</h2>
-                <p>You finished all 5 levels!</p></>
+                <h2>🏆 Reading Champion!</h2>
+                <p>You finished all 5 levels!</p>
             </div>
         `;
     }
 }
 
 /* ========================================================
-   WRITING MODULE 
+   11. WRITING MODULE (Canvas Trace)
    ======================================================== */  
-   document.addEventListener('DOMContentLoaded', () => {
-    const canvases = document.querySelectorAll('.tracing-canvas');
-    canvases.forEach(canvas => setupCanvas(canvas));
-});
-
 function setupCanvas(canvas) {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -658,7 +624,6 @@ function setupCanvas(canvas) {
     const ctx = canvas.getContext('2d');
     let painting = false;
 
-    // Default settings
     ctx.lineWidth = 10;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -710,7 +675,7 @@ function clearCanvas(btn) {
 }
 
 /* ========================================================
-    AUDIO CONTROLLER
+   12. AUDIO CONTROLLER
    ======================================================== */
 function playAudio(fullText) {
   if ('speechSynthesis' in window) {
@@ -726,10 +691,8 @@ function playAudio(fullText) {
 }
 
 /* ========================================================
-    SECTION 3 - CHALLENGE MORE SCRAMBLE GAME LOGIC
+   13. SECTION 3 - CHALLENGE MORE SCRAMBLE GAME LOGIC
    ======================================================== */
-
-   
 const challenges = [
     { title: "Nature", words: ["CLOUDS", "RIVER", "TREES", "GRASS", "STARS"] },
     { title: "Animals", words: ["ZEBRA", "TIGER", "SHARK", "HORSE", "MOUSE"] },
@@ -738,6 +701,7 @@ const challenges = [
 
 function initChallengeArena() {
     const bubbleContainer = document.getElementById('bubble-section');
+    if (!bubbleContainer) return;
     
     challenges.forEach((quest, qIndex) => {
         let card = document.createElement('div');
@@ -750,8 +714,8 @@ function initChallengeArena() {
                     <input type="text" id="q${qIndex}-i${i}" data-ans="${word}">
                 </div>
             `).join('')}
-            <><button onclick="checkAnswers(${qIndex})">Check Answers</button>
-            <div id="feedback-${qIndex}"></div></>
+            <button onclick="checkAnswers(${qIndex})">Check Answers</button>
+            <div id="feedback-${qIndex}"></div>
         `;
         bubbleContainer.appendChild(card);
     });
@@ -762,7 +726,7 @@ function scramble(word) {
 }
 
 function checkAnswers(qIndex) {
-    const inputs = document.querySelectorAll([id^="q${qIndex}-i"]);
+    const inputs = document.querySelectorAll(`[id^="q${qIndex}-i"]`);
     let correct = 0;
     
     inputs.forEach(input => {
@@ -774,8 +738,141 @@ function checkAnswers(qIndex) {
         }
     });
     
-    document.getElementById(`feedback-${qIndex}`).innerText = 
-       correct === 5 ? "🎉 Perfect!" : `Got ${correct}/5 correct.`;
-  }
+    const feedback = document.getElementById(`feedback-${qIndex}`);
+    if (feedback) {
+        feedback.innerText = correct === 5 ? "🎉 Perfect!" : `Got ${correct}/5 correct.`;
+    }
+}
 
-window.onload = initChallengeArena;
+/* ========================================================
+   14. UNIFIED INITIALIZER (Auto-loads layout elements contextually)
+   ======================================================== */
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Load Scramble & Phonics Challenges if matching elements exist
+    for(let i = 0; i < 5; i++) {
+        if(document.getElementById(`scramble-zone-${i}`)) {
+            initScrambleGame(i);
+        }
+        if(document.getElementById(`audio-zone-${i}`)) {
+            initAudioGame(i);
+        }
+    }
+
+    // 2. Load Noun Hunt matching game parts
+    if(document.getElementById('noun-hunt-container')) {
+        loadNounHunt();
+    }
+
+    // 3. Setup drawing canvases safely
+    const canvases = document.querySelectorAll('.tracing-canvas');
+    canvases.forEach(canvas => setupCanvas(canvas));
+
+    // 4. Initialize the Scramble challenge blocks arena
+    if(document.getElementById('bubble-section')) {
+        initChallengeArena();
+    }
+});
+
+/**
+ * Navigation Sidebar Handler
+ * Toggles the open/close state of the mobile layout slide-out navigation menu.
+ * Synchronizes both the layout drawer interface and the background mask panel.
+ */
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebarMenu');
+  const overlay = document.getElementById('sidebarOverlay');
+  
+  if (sidebar && overlay) {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+}
+
+/**
+ * Navigation Links State Highlighter
+ * Analyzes the active browser window window path name and applies
+ * appropriate visual styling indicators to active layout components.
+ */
+function highlightCurrentPage() {
+  const path = window.location.pathname;
+  const page = path.split("/").pop();
+  
+  if (page === "index.html" || page === "") {
+    const playLink = document.getElementById('link-play');
+    if (playLink) playLink.classList.add('active');
+  } else if (page === "lesson.html") {
+    const studyLink = document.getElementById('link-study');
+    if (studyLink) studyLink.classList.add('active');
+  } else if (page === "games.html") {
+    const challengeLink = document.getElementById('link-challenge');
+    if (challengeLink) challengeLink.classList.add('active');
+  }
+}
+
+// Handle layout adjustments once the DOM elements have safely registered
+window.addEventListener('DOMContentLoaded', highlightCurrentPage);
+
+/**
+ * FAQ Accordion Panel Toggle Handler
+ * Listens for click interactions across interactive FAQ cards, computing heights
+ * dynamically to transition container elements open and shut seamlessly.
+ */
+function initFaqAccordion() {
+  const faqCards = document.querySelectorAll('.faq-card');
+
+  faqCards.forEach(card => {
+    const header = card.querySelector('.faq-header');
+    const body = card.querySelector('.faq-body');
+
+    header.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+
+      // First close all other open cards for a cleaner look
+      faqCards.forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.classList.remove('open');
+          otherCard.querySelector('.faq-body').style.maxHeight = null;
+        }
+      });
+
+      // Toggle the targeted card
+      if (isOpen) {
+        card.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        card.classList.add('open');
+        // Set height explicitly using scrollHeight to activate the smooth CSS transition
+        body.style.maxHeight = body.scrollHeight + "px";
+      }
+    });
+  });
+}
+
+// Run the initialization loop safely once the layout has mounted
+window.addEventListener('DOMContentLoaded', initFaqAccordion);
+
+/**
+ * Feedback Form Interactive Handler
+ * Prevents page reloads during form submission events, capturing inputs,
+ * displaying a kid-friendly alert notification, and resetting elements safely.
+ */
+function initFeedbackForm() {
+  const form = document.getElementById('feedbackForm');
+  
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Stop default browser refresh actions
+      
+      const nameInput = document.getElementById('feedbackName');
+      const name = nameInput ? nameInput.value : "Friend";
+      
+      // Prompt popup action confirming user feedback
+      alert(`Thank you for your feedback, ${name}! Your helpful thoughts have been submitted to the Learn4Kids team. ✨`);
+      
+      form.reset(); // Safely clean all data input inputs
+    });
+  }
+}
+
+// Attach the validation script setup execution loop securely to the document mounting matrix
+window.addEventListener('DOMContentLoaded', initFeedbackForm);
