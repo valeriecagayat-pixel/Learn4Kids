@@ -6,8 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
- font-family: 'Fredoka', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
 }
 
 html {
@@ -81,6 +83,7 @@ body {
 }
 
 .hamburger-btn {
+  padding-left: 0%;
   background: none;
   border: none;
   color: var(--clr-primary);
@@ -184,10 +187,10 @@ body {
 }
 
 .hero-image {
-  max-width: 85%;
+  max-width: 75%;
   height: auto;
   animation: floatMascot 4s ease-in-out infinite;
-  margin-left: 60px;
+  margin-left: 80px;
 }
 
 @keyframes floatMascot {
@@ -260,8 +263,10 @@ body {
 
 .team-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   gap: 35px;
   margin-top: 40px;
 }
@@ -700,13 +705,13 @@ body {
   
 }
 
-.back-btn, .module-btn{
+.back-btn {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   text-decoration: none;
   background: var(--clr-purple) !important; 
-  color: #322e2e !important;
+  color: #FFFFFF !important;
   padding: 10px 20px;
   border-radius: 50px;
   font-size: 15px;
@@ -715,7 +720,7 @@ body {
   transition: var(--transition-arcade);
 }
 
-.back-btn, .module-btn:hover {
+.back-btn:hover {
   background: #A366FF !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 0px #9059D4 !important;
@@ -768,10 +773,9 @@ body {
 }
 
 .listening-img {
-  width: 70%;
+  width: 100%;
   border-radius: 20px;
   margin-bottom: 25px;
-  margin-left: 90px;
   object-fit: cover;
 }
 
@@ -915,6 +919,113 @@ body {
 
 .skill-card button:hover {
     background: var(--clr-purple);
+}
+
+.contact-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+        }
+
+.contact-card h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    color: #34495e;
+}
+
+.contact-item i {
+    font-size: 20px;
+    color: #2980b9;
+    margin-right: 12px;
+    width: 24px;
+    text-align: center;
+}
+
+.contact-item a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================
+   9. FEEDBACK FORM EXTENSIONS
+   ======================================================== */
+.feedback-form-container {
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+  background: #FFFFFF;
+  cursor: default; /* Overrides card pointer action */
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #3C3352;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 3px solid var(--clr-kid-card-border);
+  border-radius: 16px;
+  font-size: 15px;
+  font-family: 'Fredoka', sans-serif;
+  color: #3C3352;
+  background-color: #FAF7FF;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Bright focus ring targeting for accessibility and gamified feedback */
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 4px rgba(165, 94, 234, 0.15);
+  background-color: #FFFFFF;
+}
+
+/* Form Action Buttons mimicking the structural hero buttons */
+.btn-submit {
+  display: inline-block;
+  background: var(--clr-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 0px #3C3352;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-submit:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0px #3C3352;
 }
 
 /* ========================================================

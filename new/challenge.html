@@ -20,7 +20,7 @@
     <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
   </nav>
 
- <div class="back-btn-container">
+  <div class="back-btn-container">
   <a href="javascript:history.back()" class="back-btn">← Go Back</a>
 </div>
 
@@ -32,7 +32,6 @@
       <a href="topic.html" id="link-play">🎮 Play Zone</a>
       <a href="lesson.html" id="link-study">📚 Study Library</a>
       <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
-      <a href="mastery.html" id="link-mastery">🏅 Mastery Hub</a>
     </div>
   </div>
 
@@ -75,7 +74,15 @@
     <h3 style="text-align: center; font-size: 26px; color: var(--clr-pink); margin: 60px 0 20px 0;">🎤 Pinoy Henyo Audio 🎤</h3>
     <div class="big-boxes-layout">
       
-        <div class="skill-card"><p>I am red/crunchy.</p><button onclick="playAudio('apple')">Play</button><select><option>Apple</option></select></div>
+        <div class="skill-card"><p>I am red/crunchy.</p><button onclick="playAudio('apple')">Play</button>
+          <select>
+            <option>Apple</option>
+            <option>Bird</option>
+            <option>Frog</option>
+            <option>School</option>
+            <option>Fish</option>
+          </select>
+        </div>
         <div class="skill-card"><p>I have wings.</p><button onclick="playAudio('bird')">Play</button><select><option>Bird</option></select></div>
         <div class="skill-card"><p>I jump on pads.</p><button onclick="playAudio('frog')">Play</button><select><option>Frog</option></select></div>
         <div class="skill-card"><p>I am for study.</p><button onclick="playAudio('school')">Play</button><select><option>School</option></select></div>

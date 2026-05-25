@@ -10,14 +10,36 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">Learn4Kids</div>
-        <div class="nav-links">
-            <a href="index.html" class="nav-tab">Home</a>
-            <a href="#about" class="nav-tab">About Us</a>
-            <a href="#contacts" class="nav-tab">Contacts</a>
-        </div>
-        <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">☰</button>
-    </nav>
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="back-btn-container">
+  <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+</div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+    
+    <div class="sidebar-links">
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
 
 
     <main id="topics" class="topics-section">

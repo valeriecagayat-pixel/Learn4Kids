@@ -772,3 +772,107 @@ window.addEventListener('DOMContentLoaded', () => {
         initChallengeArena();
     }
 });
+
+/**
+ * Navigation Sidebar Handler
+ * Toggles the open/close state of the mobile layout slide-out navigation menu.
+ * Synchronizes both the layout drawer interface and the background mask panel.
+ */
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebarMenu');
+  const overlay = document.getElementById('sidebarOverlay');
+  
+  if (sidebar && overlay) {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+}
+
+/**
+ * Navigation Links State Highlighter
+ * Analyzes the active browser window window path name and applies
+ * appropriate visual styling indicators to active layout components.
+ */
+function highlightCurrentPage() {
+  const path = window.location.pathname;
+  const page = path.split("/").pop();
+  
+  if (page === "index.html" || page === "") {
+    const playLink = document.getElementById('link-play');
+    if (playLink) playLink.classList.add('active');
+  } else if (page === "lesson.html") {
+    const studyLink = document.getElementById('link-study');
+    if (studyLink) studyLink.classList.add('active');
+  } else if (page === "games.html") {
+    const challengeLink = document.getElementById('link-challenge');
+    if (challengeLink) challengeLink.classList.add('active');
+  }
+}
+
+// Handle layout adjustments once the DOM elements have safely registered
+window.addEventListener('DOMContentLoaded', highlightCurrentPage);
+
+/**
+ * FAQ Accordion Panel Toggle Handler
+ * Listens for click interactions across interactive FAQ cards, computing heights
+ * dynamically to transition container elements open and shut seamlessly.
+ */
+function initFaqAccordion() {
+  const faqCards = document.querySelectorAll('.faq-card');
+
+  faqCards.forEach(card => {
+    const header = card.querySelector('.faq-header');
+    const body = card.querySelector('.faq-body');
+
+    header.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+
+      // First close all other open cards for a cleaner look
+      faqCards.forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.classList.remove('open');
+          otherCard.querySelector('.faq-body').style.maxHeight = null;
+        }
+      });
+
+      // Toggle the targeted card
+      if (isOpen) {
+        card.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        card.classList.add('open');
+        // Set height explicitly using scrollHeight to activate the smooth CSS transition
+        body.style.maxHeight = body.scrollHeight + "px";
+      }
+    });
+  });
+}
+
+// Run the initialization loop safely once the layout has mounted
+window.addEventListener('DOMContentLoaded', initFaqAccordion);
+
+/**
+ * Feedback Form Interactive Handler
+ * Prevents page reloads during form submission events, capturing inputs,
+ * displaying a kid-friendly alert notification, and resetting elements safely.
+ */
+function initFeedbackForm() {
+  const form = document.getElementById('feedbackForm');
+  
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Stop default browser refresh actions
+      
+      const nameInput = document.getElementById('feedbackName');
+      const name = nameInput ? nameInput.value : "Friend";
+      
+      // Prompt popup action confirming user feedback
+      alert(`Thank you for your feedback, ${name}! Your helpful thoughts have been submitted to the Learn4Kids team. ✨`);
+      
+      form.reset(); // Safely clean all data input inputs
+    });
+  }
+}
+
+// Attach the validation script setup execution loop securely to the document mounting matrix
+window.addEventListener('DOMContentLoaded', initFeedbackForm);
