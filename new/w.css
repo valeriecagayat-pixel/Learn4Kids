@@ -80,13 +80,19 @@ body {
   color: var(--clr-primary); 
 }
 
+/* MODIFIED: Hamburger button remains permanently visible on all screen sizes */
 .hamburger-btn {
-  padding-left: 0%;
+  display: block; 
   background: none;
   border: none;
   color: var(--clr-primary);
   font-size: 28px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.1);
 }
 
 /* Sidebar drawer styling */
@@ -134,6 +140,16 @@ body {
   display: flex; 
   flex-direction: column; 
   gap: 12px; 
+}
+
+/* NEW: Injected style targets for handling Home, About Us, and Contacts items */
+.mobile-only-nav {
+  display: none; /* Hidden by default on Desktops inside the sidebar */
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 2px dashed var(--clr-kid-card-border);
+  padding-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .sidebar-links a {
@@ -264,7 +280,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* UPDATED: Changed from nowrap to wrap for mobile safety */
+  flex-wrap: nowrap; 
   gap: 35px;
   margin-top: 40px;
 }
@@ -934,12 +950,15 @@ body {
    15. MEDIA QUERIES (MOBILE RESPONSIVENESS MATRIX)
    ======================================================== */
 
-/* Handles Small Desktops and Tablets */
+/* Handles Small Desktops, Tablets, and Foldables */
 @media (max-width: 992px) {
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 60px 5%;
+  }
+  .hero-left {
+    max-width: 100%;
   }
   .hero-image {
     margin-left: 0;
@@ -957,33 +976,53 @@ body {
   }
 }
 
-/* Handles All Typical Mobile Screen Widths (Phones) */
+/* Handles Small Devices and Phones (Phone-Layout Transition Grid) */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 5%;
-  }
-  /* Hide standard desktop nav links on phones to make space for hamburger menu */
+  /* 1. Hide original horizontal top-level navigation row */
   .nav-links {
     display: none;
   }
-  .shining-text, .topics-intro .title {
-    font-size: 32px;
+
+  /* 2. Unhide the target wrapper layout inside the hamburger menu panel */
+  .mobile-only-nav {
+    display: flex;
   }
-  .about-intro h2, .team-section h2 {
-    font-size: 28px;
+
+  /* 3. Structural mobile adaptation overrides */
+  .skills-grid, .big-boxes-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
+
+  .team-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
   .skill-card {
     padding: 30px 20px;
     min-height: auto;
   }
-  .word-display {
-    font-size: 40px;
+
+  .shining-text, .topics-intro .title {
+    font-size: 32px;
   }
+
+  .about-intro h2, .team-section h2 {
+    font-size: 28px;
+  }
+
+  .word-display {
+    font-size: 38px;
+  }
+
   .game-controls, .choices-speak {
     flex-direction: column;
+    width: 100%;
   }
-  .team-container {
-    flex-direction: column;
-    align-items: center;
+
+  .audio-letter-grid {
+    grid-template-columns: 1fr;
   }
 }
