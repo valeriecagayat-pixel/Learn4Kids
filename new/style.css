@@ -80,7 +80,7 @@ body {
   color: var(--clr-primary); 
 }
 
-/* MODIFIED: Hamburger button remains permanently visible on all screen sizes */
+/* Modifed: Hamburger menu button stays permanently visible on wide desktops */
 .hamburger-btn {
   display: block; 
   background: none;
@@ -142,9 +142,9 @@ body {
   gap: 12px; 
 }
 
-/* NEW: Injected style targets for handling Home, About Us, and Contacts items */
+/* Controlled Layout Area: Hidden on Desktops inside the Sidebar Drawer */
 .mobile-only-nav {
-  display: none; /* Hidden by default on Desktops inside the sidebar */
+  display: none; 
   flex-direction: column;
   gap: 12px;
   border-bottom: 2px dashed var(--clr-kid-card-border);
@@ -280,7 +280,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap; /* Changed from nowrap to handle responsiveness nicely */
   gap: 35px;
   margin-top: 40px;
 }
@@ -354,7 +354,7 @@ body {
 
 .skills-grid, .big-boxes-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* UPDATED: Automatically resizes fluidly down to mobile dimensions */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   gap: 30px;
   max-width: 1200px; 
   margin: 0 auto; 
@@ -950,7 +950,7 @@ body {
    15. MEDIA QUERIES (MOBILE RESPONSIVENESS MATRIX)
    ======================================================== */
 
-/* Handles Small Desktops, Tablets, and Foldables */
+/* Handles Small Desktops, Foldables, and Mid-sized Tablets */
 @media (max-width: 992px) {
   .hero {
     flex-direction: column;
@@ -976,27 +976,27 @@ body {
   }
 }
 
-/* Handles Small Devices and Phones (Phone-Layout Transition Grid) */
+/* Target Viewport for Smartphones and Compact Phone Layouts */
 @media (max-width: 768px) {
-  /* 1. Hide original horizontal top-level navigation row */
+  /* 1. Hide the horizontal links layout row inside the header navbar */
   .nav-links {
     display: none;
   }
 
-  /* 2. Unhide the target wrapper layout inside the hamburger menu panel */
+  /* 2. Seamlessly reveal Home, About Us, and Contacts items inside the Sidebar Menu drawer */
   .mobile-only-nav {
     display: flex;
   }
 
-  /* 3. Structural mobile adaptation overrides */
+  /* 3. Flexible layout adaptation adjustments for columns across the app */
   .skills-grid, .big-boxes-layout {
     grid-template-columns: 1fr;
     gap: 25px;
   }
 
   .team-container {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 25px;
   }
 
