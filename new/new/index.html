@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn4Kids - Adventure Learning</title>
+  <link class="code-asset" rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+
+    <div class="sidebar-links">
+      <div class="mobile-only-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="#about" onclick="toggleSidebar()">ℹ️ About Us</a>
+        <a href="#contacts" onclick="toggleSidebar()">📞 Contacts</a>
+      </div>
+
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-left">
+      <h1 class="shining-text">Start your Journey:<br>Explore Now!</h1>
+      <p class="hero-sub">Master the 4 Macro Skills of English through interactive play!</p>
+
+      <a href="topic.html" class="btn-responsive">Let's Play & Learn! ➔</a>
+    </div>
+
+    <div class="hero-right">
+      <img src="ibon.png" alt="Friendly reading mascot bird" class="hero-image">
+    </div>
+  </header>
+
+  <main id="about" class="about-section">
+    <div class="about-intro">
+      <h2>About Our Platform</h2>
+      <p>Learn4Kids is a vibrant digital space curated specifically for primary school students to grasp core English
+        competencies intuitively.</p>
+    </div>
+
+    <div class="mv-container">
+      <div class="mv-box mission-box">
+        <h3>🚀 Our Mission</h3>
+        <p>To turn foundational language acquisition into an engaging adventure, helping young learners decode grammar
+          and vocabulary through vibrant activities.</p>
+      </div>
+      <div class="mv-box vision-box">
+        <h3>👁️ Our Vision</h3>
+        <p>To foster an inclusive environment where primary students can confidently speak, beautifully write, clearly
+          read, and actively listen in English.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="team-section">
+    <h2>OUR TEAM</h2>
+
+    <div class="team-container">
+
+      <div class="member">
+        <img src="photo1.jpg" class="circle-frame" alt="">
+        <h4>Kristel Balquin</h4>
+        <p>Leader</p>
+      </div>
+
+      <div class="member">
+        <img src="cagayat.jpg" class="circle-frame" alt="">
+        <h4>Valerie Ann Cagayat</h4>
+        <p>Designer</p>
+      </div>
+
+      <div class="member">
+        <img src="photo2.jpg" class="circle-frame" alt="">
+        <h4>Lester Caspe</h4>
+        <p>Designer</p>
+      </div>
+
+      <div class="member">
+        <img src="photo2.jpg" class="circle-frame" alt="">
+        <h4>Ruzzel John Cruzat</h4>
+        <p>Designer</p>
+      </div>
+
+      <div class="member">
+        <img src="photo2.jpg" class="circle-frame" alt="">
+        <h4>Ramon Colmenar</h4>
+        <p>Designer</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+
+      <div class="logo">
+      <img src="logo.png" class="circle-frame" alt="">
+    </div>
+
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="contacts.html">📞 Contacts</a></li>
+          <li><a href="faqs.html">❓ FAQs</a></li>
+          <li><a href="feedbackform.html">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
