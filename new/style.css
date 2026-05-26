@@ -1,5 +1,3 @@
-
-
 /* ========================================================
    1. CORE SETUP & GLOBAL RESETS
    ======================================================== */
@@ -199,7 +197,7 @@ body {
 }
 
 .shining-text, .topics-intro .title {
-  font-size: 46px !important;
+  font-size: 46px;
   font-weight: 800;
   line-height: 1.2;
   background: linear-gradient(to right, #FF6B6B, #FF9F43, #10AC84, #54A0FF, #9B5DE5);
@@ -211,7 +209,7 @@ body {
 }
 
 /* ========================================================
-   4. MISSION, VISION, & TEAM SECTION (UPDATED PASTEL)
+   4. MISSION, VISION, & TEAM SECTION
    ======================================================== */
 .about-section, .team-section {
   padding: 80px 8%;
@@ -266,7 +264,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; /* UPDATED: Changed from nowrap to wrap for mobile safety */
   gap: 35px;
   margin-top: 40px;
 }
@@ -287,23 +285,23 @@ body {
 }
 
 .circle-frame {
-  width: 120px !important;
-  height: 120px !important;
-  border-radius: 50% !important; 
-  object-fit: cover !important; 
-  margin: 0 auto 15px auto !important;
-  display: block !important;
-  border: 4px solid var(--clr-cyan) !important; 
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin: 0 auto 15px auto;
+  display: block;
+  border: 4px solid var(--clr-cyan); 
   box-shadow: 0 4px 10px rgba(116, 185, 255, 0.3);
 }
 
 .team-container .member:nth-child(2n) .circle-frame {
-  border-color: var(--clr-pink) !important;
+  border-color: var(--clr-pink);
   box-shadow: 0 4px 10px rgba(252, 167, 223, 0.4);
 }
 
 .team-container .member:nth-child(3n) .circle-frame {
-  border-color: var(--clr-yellow) !important;
+  border-color: var(--clr-yellow);
   box-shadow: 0 4px 10px rgba(255, 223, 0, 0.3);
 }
 
@@ -320,7 +318,7 @@ body {
 }
 
 /* ========================================================
-   5. UNIFIED 2x2 ARCADE GRID LAYOUT
+   5. UNIFIED GRID LAYOUT
    ======================================================== */
 .topics-section {
   padding: 60px 20px;
@@ -339,214 +337,210 @@ body {
 }
 
 .skills-grid, .big-boxes-layout {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; 
-  gap: 30px !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* UPDATED: Automatically resizes fluidly down to mobile dimensions */
+  gap: 30px;
   max-width: 1200px; 
   margin: 0 auto; 
   width: 100%;
 }
 
 .skill-card {
-  background: var(--clr-kid-card-bg) !important;
-  border-radius: 28px !important;
-  padding: 35px 30px !important; 
-  text-align: left !important; 
-  position: relative !important;
-  border: 3px solid var(--clr-kid-card-border) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important; 
-  min-height: 420px !important; 
+  background: var(--clr-kid-card-bg);
+  border-radius: 28px;
+  padding: 35px 30px; 
+  text-align: left; 
+  position: relative;
+  border: 3px solid var(--clr-kid-card-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  min-height: 420px; 
   box-shadow: 0 10px 20px rgba(165, 94, 234, 0.04);
 }
 
 /* ========================================================
    6. MODULE VARIANT COLOURS & BADGES
    ======================================================== */
-/* Listening variant style */
-.listening-arcade { border-color: #74B9FF !important; background-color: #F0F7FF !important; }
-.listening-badge { background: #74B9FF !important; color: #FFFFFF !important; }
+.listening-arcade { border-color: #74B9FF; background-color: #F0F7FF; }
+.listening-badge { background: #74B9FF; color: #FFFFFF; }
 
-/* Speaking variant style */
-.speaking-arcade { border-color: #FF9F87 !important; background-color: #FFF2F0 !important; }
-.speaking-badge { background: #FF9F87 !important; color: #FFFFFF !important; }
+.speaking-arcade { border-color: #FF9F87; background-color: #FFF2F0; }
+.speaking-badge { background: #FF9F87; color: #FFFFFF; }
 
-/* Reading variant style */
-.reading-arcade { border-color: #FFC312 !important; background-color: #FFFDF0 !important; }
-.reading-badge { background: #FFC312 !important; color: #3C3352 !important; }
+.reading-arcade { border-color: #FFC312; background-color: #FFFDF0; }
+.reading-badge { background: #FFC312; color: #3C3352; }
 
-/* Writing variant style */
-.writing-arcade { border-color: #1DD1A1 !important; background-color: #F0FFF9 !important; }
-.writing-badge { background: #1DD1A1 !important; color: #FFFFFF !important; }
+.writing-arcade { border-color: #1DD1A1; background-color: #F0FFF9; }
+.writing-badge { background: #1DD1A1; color: #FFFFFF; }
 
 /* Fallback sequential child mapping */
-.big-boxes-layout div:nth-child(4n+1) { border-color: #74B9FF !important; background-color: #F0F7FF !important; }
-.big-boxes-layout div:nth-child(4n+1) .category { background: #74B9FF !important; color: #FFFFFF !important; }
+.big-boxes-layout div:nth-child(4n+1) { border-color: #74B9FF; background-color: #F0F7FF; }
+.big-boxes-layout div:nth-child(4n+1) .category { background: #74B9FF; color: #FFFFFF; }
 
-.big-boxes-layout div:nth-child(4n+2) { border-color: #FF9F87 !important; background-color: #FFF2F0 !important; }
-.big-boxes-layout div:nth-child(4n+2) .category { background: #FF9F87 !important; color: #FFFFFF !important; }
+.big-boxes-layout div:nth-child(4n+2) { border-color: #FF9F87; background-color: #FFF2F0; }
+.big-boxes-layout div:nth-child(4n+2) .category { background: #FF9F87; color: #FFFFFF; }
 
-.big-boxes-layout div:nth-child(4n+3) { border-color: #FFC312 !important; background-color: #FFFDF0 !important; }
-.big-boxes-layout div:nth-child(4n+3) .category { background: #FFC312 !important; color: #3C3352 !important; }
+.big-boxes-layout div:nth-child(4n+3) { border-color: #FFC312; background-color: #FFFDF0; }
+.big-boxes-layout div:nth-child(4n+3) .category { background: #FFC312; color: #3C3352; }
 
-.big-boxes-layout div:nth-child(4n+4) { border-color: #1DD1A1 !important; background-color: #F0FFF9 !important; }
-.big-boxes-layout div:nth-child(4n+4) .category { background: #1DD1A1 !important; color: #FFFFFF !important; }
+.big-boxes-layout div:nth-child(4n+4) { border-color: #1DD1A1; background-color: #F0FFF9; }
+.big-boxes-layout div:nth-child(4n+4) .category { background: #1DD1A1; color: #FFFFFF; }
 
 .card-badge, .skill-card .category {
-  position: absolute !important; top: -15px !important; left: 30px !important; 
-  padding: 8px 22px !important; border-radius: 50px !important;
-  font-size: 14px !important; font-weight: 800 !important;
+  position: absolute; top: -15px; left: 30px; 
+  padding: 8px 22px; border-radius: 50px;
+  font-size: 14px; font-weight: 800;
   text-transform: uppercase;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   z-index: 10;
 }
 
 .skill-card h3, .module-name {
-  font-size: 24px !important;
-  margin-top: 15px !important;
-  margin-bottom: 10px !important;
-  color: #3C3352 !important; 
-  font-weight: 700 !important;
+  font-size: 24px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #3C3352; 
+  font-weight: 700;
 }
 
 .game-instruction, .module-description {
-  font-size: 15px !important;
-  color: var(--clr-kid-text-muted) !important;
-  line-height: 1.6 !important;
-  margin-bottom: 15px !important;
+  font-size: 15px;
+  color: var(--clr-kid-text-muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 .module-description b {
-  color: var(--clr-primary) !important; 
-  background: rgba(165, 94, 234, 0.08) !important;
-  padding: 2px 8px !important; 
-  border-radius: 8px !important;
+  color: var(--clr-primary); 
+  background: rgba(165, 94, 234, 0.08);
+  padding: 2px 8px; 
+  border-radius: 8px;
 }
 
 /* ========================================================
    7. MINI-GAME MODULE WRAPPER SCREENS
    ======================================================== */
 .mini-game-box {
-  background: #FFFFFF !important; 
-  border-radius: 20px !important; 
-  padding: 18px !important; 
-  margin-bottom: 20px !important; 
-  border: 2px solid var(--clr-kid-card-border) !important;
-  flex-grow: 1 !important; 
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  box-shadow: inset 0 2px 5px rgba(165, 94, 234, 0.05) !important;
+  background: #FFFFFF; 
+  border-radius: 20px; 
+  padding: 18px; 
+  margin-bottom: 20px; 
+  border: 2px solid var(--clr-kid-card-border);
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: inset 0 2px 5px rgba(165, 94, 234, 0.05);
 }
 
 .game-score { 
-  font-size: 13px !important; 
-  text-align: right !important; 
-  color: #FF9F43 !important; 
-  font-weight: bold !important; 
+  font-size: 13px; 
+  text-align: right; 
+  color: #FF9F43; 
+  font-weight: bold; 
 }
 
 .word-display { 
-  text-align: center !important; 
-  font-size: 52px !important; 
-  font-weight: 700 !important; 
-  margin: 15px 0 !important; 
-  color: #3C3352 !important;
-  text-shadow: 0 4px 0px rgba(165, 94, 234, 0.1) !important; 
+  text-align: center; 
+  font-size: 52px; 
+  font-weight: 700; 
+  margin: 15px 0; 
+  color: #3C3352;
+  text-shadow: 0 4px 0px rgba(165, 94, 234, 0.1); 
 }
 
 .game-feedback { 
-  font-size: 14px !important;
-  text-align: center !important;
-  color: #8A7B9F !important;
-  font-weight: 600 !important;
+  font-size: 14px;
+  text-align: center;
+  color: #8A7B9F;
+  font-weight: 600;
 }
 
 /* ========================================================
    8. GAME INTERACTIVE BUTTONS & CONTROLLERS
    ======================================================== */
 .game-controls, .choices-speak { 
-  display: flex !important; 
-  gap: 12px !important; 
-  margin-top: 10px !important;
+  display: flex; 
+  gap: 12px; 
+  margin-top: 10px;
 }
 
 .game-controls-vertical { 
-  display: flex !important; 
-  flex-direction: column !important; 
-  gap: 12px !important; 
-  margin-top: 10px !important;
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  margin-top: 10px;
 }
 
 .game-btn {
-  flex: 1 !important; 
-  padding: 12px 16px !important; 
-  background: #E8F0FE !important; 
-  border: none !important;
-  color: #4A5568 !important; 
-  border-radius: 16px !important; 
-  cursor: pointer !important; 
-  font-weight: 700 !important; 
-  font-size: 14px !important;
-  box-shadow: 0 5px 0px #C5D6F7 !important; 
-  transition: var(--transition-arcade) !important;
+  flex: 1; 
+  padding: 12px 16px; 
+  background: #E8F0FE; 
+  border: none;
+  color: #4A5568; 
+  border-radius: 16px; 
+  cursor: pointer; 
+  font-weight: 700; 
+  font-size: 14px;
+  box-shadow: 0 5px 0px #C5D6F7; 
+  transition: var(--transition-arcade);
 }
 
 .game-btn:hover { 
-  background: #DCE7FC !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 7px 0px #C5D6F7 !important;
+  background: #DCE7FC;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0px #C5D6F7;
 }
 
 .game-btn:active {
-  transform: translateY(4px) !important;
-  box-shadow: 0 1px 0px #C5D6F7 !important;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0px #C5D6F7;
 }
 
 .btn-action-green { 
-  background: #1DD1A1 !important; 
-  color: white !important;
-  box-shadow: 0 5px 0px #10AC84 !important; 
+  background: #1DD1A1; 
+  color: white;
+  box-shadow: 0 5px 0px #10AC84; 
 }
-.btn-action-green:hover { background: #10AC84 !important; box-shadow: 0 7px 0px #10AC84 !important; }
-.btn-action-green:active { box-shadow: 0 1px 0px #10AC84 !important; }
+.btn-action-green:hover { background: #10AC84; box-shadow: 0 7px 0px #10AC84; }
+.btn-action-green:active { box-shadow: 0 1px 0px #10AC84; }
 
 .btn-action-red { 
-  background: #FF6B6B !important; 
-  color: white !important;
-  box-shadow: 0 5px 0px #EE5253 !important; 
+  background: #FF6B6B; 
+  color: white;
+  box-shadow: 0 5px 0px #EE5253; 
 }
-.btn-action-red:hover { background: #EE5253 !important; box-shadow: 0 7px 0px #EE5253 !important; }
-.btn-action-red:active { box-shadow: 0 1px 0px #EE5253 !important; }
+.btn-action-red:hover { background: #EE5253; box-shadow: 0 7px 0px #EE5253; }
+.btn-action-red:active { box-shadow: 0 1px 0px #EE5253; }
 
 .btn-responsive, .start-learning-btn {
-  display: inline-block !important;
-  text-decoration: none !important;
-  text-align: center !important;
-  background: var(--clr-primary) !important; 
-  color: #FFFFFF !important; 
-  border: none !important; 
-  padding: 14px 24px !important;
-  border-radius: 50px !important; 
-  font-size: 16px !important; 
-  font-weight: 800 !important; 
-  cursor: pointer !important; 
-  box-shadow: 0 6px 0px #8442C2 !important; 
-  transition: var(--transition-arcade) !important;
-  margin-top: auto !important; 
-  width: 100% !important;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background: var(--clr-primary); 
+  color: #FFFFFF; 
+  border: none; 
+  padding: 14px 24px;
+  border-radius: 50px; 
+  font-size: 16px; 
+  font-weight: 800; 
+  cursor: pointer; 
+  box-shadow: 0 6px 0px #8442C2; 
+  transition: var(--transition-arcade);
+  margin-top: auto; 
+  width: 100%;
 }
 
 .btn-responsive:hover, .start-learning-btn:hover { 
-  background: #B379DD !important; 
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 0px #8442C2 !important;
+  background: #B379DD; 
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0px #8442C2;
 }
 
 .btn-responsive:active, .start-learning-btn:active {
-  transform: translateY(5px) !important;
-  box-shadow: 0 1px 0px #8442C2 !important;
+  transform: translateY(5px);
+  box-shadow: 0 1px 0px #8442C2;
 }
 
 /* ========================================================
@@ -602,11 +596,11 @@ body {
    10. CHALLENGE MODE LAYOUTS & MINI-GAMES
    ======================================================== */
 .super-size-card {
-  min-height: auto !important;
-  padding: 40px 30px !important;
-  border-radius: 24px !important;
-  background: #FFFFFF !important;
-  box-shadow: 0 12px 24px rgba(60, 51, 82, 0.08) !important;
+  min-height: auto;
+  padding: 40px 30px;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 12px 24px rgba(60, 51, 82, 0.08);
 }
 
 .game-display-zone {
@@ -702,7 +696,6 @@ body {
   padding: 0 20px;
   width: 100%;
   display: flex;
-  
 }
 
 .back-btn {
@@ -710,31 +703,30 @@ body {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  background: var(--clr-purple) !important; 
-  color: #FFFFFF !important;
+  background: var(--clr-purple); 
+  color: #FFFFFF;
   padding: 10px 20px;
   border-radius: 50px;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 4px 0px #9059D4 !important; 
+  box-shadow: 0 4px 0px #9059D4; 
   transition: var(--transition-arcade);
 }
 
 .back-btn:hover {
-  background: #A366FF !important;
+  background: #A366FF;
   transform: translateY(-2px);
-  box-shadow: 0 6px 0px #9059D4 !important;
+  box-shadow: 0 6px 0px #9059D4;
 }
 
 .back-btn:active {
   transform: translateY(3px);
-  box-shadow: 0 1px 0px #9059D4 !important;
+  box-shadow: 0 1px 0px #9059D4;
 }
 
 /* ========================================================
    12. LISTENING ADVENTURE CUSTOM STYLES
    ======================================================== */
-
 .listening-adventure-layout {
   max-width: 800px;
   margin: 40px auto;
@@ -779,9 +771,8 @@ body {
   object-fit: cover;
 }
 
-
 /* ========================================================
-   13. SPEAKER BUTTON STYLES
+   13. SPEAKER BUTTON & TRACING CANVAS STYLES
    ======================================================== */
 .speaker-btn {
     background: #E4D4FF;
@@ -800,26 +791,6 @@ body {
     background: var(--clr-primary);
     color: white;
     transform: scale(1.1);
-}
-
-.tracing-canvas {
-    width: 100%;   
-    max-width: 800px;  
-    height: 300px;  
-    border: 3px dashed #dcdde1;
-    border-radius: 20px;
-    background-color: #f9f9f9;
-    touch-action: none;
-    cursor: crosshair;
-    display: block;
-    margin: 20px auto;
-}
-
-.game-btn {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    cursor: pointer;
 }
 
 .tracing-canvas {
@@ -853,122 +824,55 @@ body {
 
 .color-btn:hover { transform: scale(1.2); }
 
-
 /* ========================================================
-   14. CHALLENGE ARENA GRID LAYOUT
+   14. CONTACTS CARD & FEEDBACK FORM EXTENSIONS
    ======================================================== */
-
-/* Main container na nag-aayos sa lahat ng cards */
-.big-boxes-layout {
-    display: grid;
-    /* Gagawa ng columns na awtomatikong mag-aadjust (min 300px width) */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px; /* Para hindi sobrang lapad sa malaking screen */
-}
-
-/* Base style para sa bawat quest card */
-.skill-card {
-    background: var(--clr-kid-card-bg);
-    border: 3px solid var(--clr-kid-card-border);
-    border-radius: 20px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(165, 94, 234, 0.2);
-}
-
-/* Para sa loob ng bawat quest card (yung input fields) */
-.skill-card ul {
-    list-style: none;
-    margin: 15px 0;
-}
-
-.skill-card li {
-    margin: 10px 0;
-}
-
-.skill-card input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #E4D4FF;
-    border-radius: 10px;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.skill-card button {
-    background: var(--clr-primary);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.skill-card button:hover {
-    background: var(--clr-purple);
-}
-
 .contact-card {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
-    width: 100%;
-        }
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .contact-card h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 25px;
-    font-weight: 600;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
 .contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 18px;
-    color: #34495e;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  color: #34495e;
 }
 
 .contact-item i {
-    font-size: 20px;
-    color: #2980b9;
-    margin-right: 12px;
-    width: 24px;
-    text-align: center;
+  font-size: 20px;
+  color: #2980b9;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
 }
 
 .contact-item a {
-    color: #2980b9;
-    text-decoration: none;
+  color: #2980b9;
+  text-decoration: none;
 }
 
 .contact-item a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* ========================================================
-   9. FEEDBACK FORM EXTENSIONS
-   ======================================================== */
 .feedback-form-container {
   max-width: 600px;
   margin: 40px auto 0 auto;
   background: #FFFFFF;
-  cursor: default; /* Overrides card pointer action */
+  cursor: default; 
 }
 
 .form-group {
@@ -998,7 +902,6 @@ body {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Bright focus ring targeting for accessibility and gamified feedback */
 .form-group input:focus, 
 .form-group textarea:focus, 
 .form-group select:focus {
@@ -1007,7 +910,6 @@ body {
   background-color: #FFFFFF;
 }
 
-/* Form Action Buttons mimicking the structural hero buttons */
 .btn-submit {
   display: inline-block;
   background: var(--clr-primary);
@@ -1031,15 +933,57 @@ body {
 /* ========================================================
    15. MEDIA QUERIES (MOBILE RESPONSIVENESS MATRIX)
    ======================================================== */
-@media (max-width: 900px) {
-  .skills-grid, .big-boxes-layout, .mv-container { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; gap: 35px !important; }
-  .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
-  .hero-right { margin-top: 40px; }
-  .team-container { gap: 20px; }
+
+/* Handles Small Desktops and Tablets */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5%;
+  }
+  .hero-image {
+    margin-left: 0;
+    margin-top: 40px;
+    max-width: 60%;
+  }
+  .mv-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
 }
 
+/* Handles All Typical Mobile Screen Widths (Phones) */
 @media (max-width: 768px) {
-  .skill-card { padding: 30px 20px !important; min-height: auto !important; }
-  .word-display { font-size: 42px !important; } 
-  .about-intro h2, .team-section h2 { font-size: 28px; }
+  .navbar {
+    padding: 15px 5%;
+  }
+  /* Hide standard desktop nav links on phones to make space for hamburger menu */
+  .nav-links {
+    display: none;
+  }
+  .shining-text, .topics-intro .title {
+    font-size: 32px;
+  }
+  .about-intro h2, .team-section h2 {
+    font-size: 28px;
+  }
+  .skill-card {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+  .word-display {
+    font-size: 40px;
+  }
+  .game-controls, .choices-speak {
+    flex-direction: column;
+  }
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
