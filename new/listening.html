@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listening Adventure Land</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+
+    <div class="sidebar-links">
+      <div class="mobile-only-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="#about" onclick="toggleSidebar()">ℹ️ About Us</a>
+        <a href="#contacts" onclick="toggleSidebar()">📞 Contacts</a>
+      </div>
+
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
+
+  <main class="listening-adventure-layout">
+
+    <div class="topics-intro" style="text-align: center;">
+      <h2 class="title">✨ Listening Adventure Land ✨</h2>
+      <p class="listening-text">Click the buttons to sharpen your ears and learn!</p>
+    </div>
+
+    <div class="listening-page-card border-purple">
+      <h3 class="listening-title">🔊 Sound Magic (Phonics)</h3>
+      <img src="phonics.jpg" class="listening-img" alt="Phonics">
+      <p class="listening-text">
+        Phonics is the secret key that unlocks reading. Every letter has a hidden sound! <b>"A"</b> makes an <i>"ah"</i>
+        sound and <b>"B"</b> makes a <i>"buh"</i> sound. When you glue these sounds together, you cast a magical spell!
+      </p>
+      <button class="btn-responsive"
+        onclick="playAudio('Phonics is the secret key that unlocks reading. Every letter has a hidden sound! A makes an ah sound and B makes a buh sound. When you glue these sounds together, you cast a magical spell!')">Play
+        Sound</button>
+    </div>
+
+    <div class="listening-page-card border-pink">
+      <h3 class="listening-title">🧸 Naming Kingdom (Nouns)</h3>
+      <img src="noun.jpg" class="listening-img" alt="Nouns">
+      <p class="listening-text">
+        Nouns are labels for everything you see! From your favorite <b>toy</b>, your <b>pet</b>, to your <b>school</b>.
+        Without nouns, we wouldn't have names for the world around us.
+      </p>
+      <button class="btn-responsive"
+        onclick="playAudio('Nouns are labels for everything you see! From your favorite toy, your pet, to your school. Without nouns, we wouldn\'t have names for the world around us.')">Identify
+        Nouns</button>
+    </div>
+
+    <div class="listening-page-card border-cyan">
+      <h3 class="listening-title">🔄 Word Swappers (Pronouns)</h3>
+      <img src="pronoun.jpg" class="listening-img" alt="Pronouns">
+      <p class="listening-text">
+        Pronouns are clever word twins! Instead of saying <i>"Tim is nice, Tim is tall,"</i> you swap them with
+        <b>"He"</b> or <b>"She"</b>. They keep our stories moving smoothly.
+      </p>
+      <button class="btn-responsive"
+        onclick="playAudio('Pronouns are clever word twins! Instead of saying Tim is nice, Tim is tall, you swap them with He or She. They keep our stories moving smoothly.')">Swap
+        the Words</button>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="#" id="custom-back-btn" class="back-btn">← Go Back</a>
+    </div>
+
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+
+      <div class="logo">
+      <img src="logo.png" class="circle-frame" alt="">
+    </div>
+    
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="contacts.html">📞 Contacts</a></li>
+          <li><a href="faqs.html">❓ FAQs</a></li>
+          <li><a href="feedbackform.html">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
