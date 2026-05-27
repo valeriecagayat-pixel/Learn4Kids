@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Adventure Land</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/JavaScript" src="script.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+
+    <div class="sidebar-links">
+      <div class="mobile-only-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="#about" onclick="toggleSidebar()">ℹ️ About Us</a>
+        <a href="#contacts" onclick="toggleSidebar()">📞 Contacts</a>
+      </div>
+
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
+
+    <main id="topics" class="topics-section">
+        <div class="topics-intro">
+            <h2 class="title">✨ Writing Adventure Land ✨</h2>
+            <p class="description">Welcome to the writing island! Read the stories below to learn how to create words.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>1. Trace: BASKET</h3>
+                <canvas class="tracing-canvas" data-word="BASKET"></canvas>
+                <div class="controls">
+                    <button onclick="undoCanvas(this)">Undo ↶</button>
+                    <button onclick="clearCanvas(this)">Clear ↺</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>2. Trace: DANCING</h3>
+                <canvas class="tracing-canvas" data-word="DANCING"></canvas>
+                <div class="controls">
+                    <button onclick="undoCanvas(this)">Undo ↶</button>
+                    <button onclick="clearCanvas(this)">Clear ↺</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>3. Trace: SCHOOL</h3>
+                <canvas class="tracing-canvas" data-word="SCHOOL"></canvas>
+                <div class="controls">
+                    <button onclick="undoCanvas(this)">Undo ↶</button>
+                    <button onclick="clearCanvas(this)">Clear ↺</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>4. Trace: FRIEND</h3>
+                <canvas class="tracing-canvas" data-word="FRIEND"></canvas>
+                <div class="controls">
+                    <button onclick="undoCanvas(this)">Undo ↶</button>
+                    <button onclick="clearCanvas(this)">Clear ↺</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>5. Trace: BRIGHT</h3>
+                <canvas class="tracing-canvas" data-word="BRIGHT"></canvas>
+                <div class="controls">
+                    <button onclick="undoCanvas(this)">Undo ↶</button>
+                    <button onclick="clearCanvas(this)">Clear ↺</button>
+                </div>
+            </div>
+        
+    <div class="back-btn-container">
+      <a href="#" id="custom-back-btn" class="back-btn">← Go Back</a>
+    </div>
+    </main>
+
+    <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+        
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="contacts.html">📞 Contacts</a></li>
+          <li><a href="faqs.html">❓ FAQs</a></li>
+          <li><a href="feedbackform.html">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+    </footer>
+
+</body>
+</html>
