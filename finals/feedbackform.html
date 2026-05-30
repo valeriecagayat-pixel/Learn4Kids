@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn4Kids - Feedback Form</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+
+    <div class="sidebar-links">
+      <div class="mobile-only-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="#about" onclick="toggleSidebar()">ℹ️ About Us</a>
+        <a href="#contacts" onclick="toggleSidebar()">📞 Contacts</a>
+      </div>
+
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
+
+  <main class="about-section">
+    <div class="about-intro">
+      <h2>Feedback Form</h2>
+      <p>Share your thoughts, experiences, or suggestions with us! Your feedback helps us make Learn4Kids even more
+        magical for young learners.</p>
+    </div>
+
+    <form class="mv-box feedback-form-container" id="feedbackForm">
+
+      <div class="form-group">
+        <label for="feedbackName">Your Name:</label>
+        <input type="text" id="feedbackName" required placeholder="Enter your name here...">
+      </div>
+
+      <div class="form-group">
+        <label for="feedbackRole">Who are you?</label>
+        <select id="feedbackRole" required>
+          <option value="" disabled selected>Select your role...</option>
+          <option value="student">Student 🎮</option>
+          <option value="parent">Parent 👨‍👩‍👧</option>
+          <option value="teacher">Teacher 🍎</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="feedbackMessage">Your Message / Suggestions:</label>
+        <textarea id="feedbackMessage" rows="5" required
+          placeholder="Write your comments or feature requests here..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Feedback ✨</button>
+    </form>
+
+    <div class="back-btn-container">
+      <a href="#" id="custom-back-btn" class="back-btn">← Go Back</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+
+      <div class="logo">
+        <img src="logo.png" class="circle-frame" alt="">
+      </div>
+
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="contacts.html">📞 Contacts</a></li>
+          <li><a href="faqs.html">❓ FAQs</a></li>
+          <li><a href="feedbackform.html">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Learn4Kids. Safe, secure, and COPPA compliant educational gaming.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

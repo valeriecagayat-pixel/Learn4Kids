@@ -1,0 +1,1356 @@
+/* ========================================================
+   1. CORE SETUP & GLOBAL RESETS
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FAF7FF;
+  color: #3C3352;
+  overflow-x: hidden;
+}
+
+/* Color palette constants for theme consistency */
+:root {
+  --clr-primary: #A55EEA;
+  --clr-purple: #B983FF;
+  --clr-pink: #FDA7DF;
+  --clr-yellow: #FFDF00;
+  --clr-cyan: #74B9FF;
+  --clr-kid-bg: #F1EAFF;
+  --clr-kid-card-bg: #FFFFFF;
+  --clr-kid-card-border: #E4D4FF;
+  --clr-kid-text-muted: #6D5D83;
+  --transition-arcade: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ========================================================
+   2. NAVBAR & SIDEBAR COMPONENT
+   ======================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 4%;
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--clr-kid-card-border);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Rainbow text effect for logo */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(to right, #FF8787, #FFC312, #12CBC4, #ED4C67, #A55EEA);
+  background-size: 100% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 2px rgba(165, 94, 234, 0.2));
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-tab {
+  color: #6D5D83;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-tab:hover {
+  color: var(--clr-primary);
+}
+
+/* Hamburger menu button stays permanently visible on wide desktops */
+.hamburger-btn {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--clr-primary);
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Sidebar drawer styling */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(60, 51, 82, 0.4);
+  display: none;
+  z-index: 9998;
+}
+
+.sidebar-overlay.open {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: #FFFFFF;
+  border-left: 2px solid var(--clr-kid-card-border);
+  box-shadow: -5px 0 25px rgba(165, 94, 234, 0.1);
+  z-index: 9999;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: right 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.close-sidebar-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: #FF6B6B;
+  font-size: 26px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Controlled Layout Area: Hidden on Desktops inside the Sidebar Drawer */
+.mobile-only-nav {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 2px dashed var(--clr-kid-card-border);
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.sidebar-links a {
+  color: #6D5D83;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #FDFBFF;
+  border: 1px solid var(--clr-kid-card-border);
+  transition: all 0.25s ease;
+}
+
+.sidebar-links a:hover {
+  color: #ffffff;
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+
+/* ========================================================
+   3. LANDING HERO BANNER
+   ======================================================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #FFE8E8, #E8F0FE, #F1EAFF);
+  min-height: 75vh;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #55496A;
+  margin: 20px 0 35px 0;
+  line-height: 1.6;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 75%;
+  height: auto;
+  animation: floatMascot 4s ease-in-out infinite;
+  margin-left: 80px;
+}
+
+@keyframes floatMascot {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.shining-text,
+.topics-intro .title {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(to right, #FF6B6B, #FF9F43, #10AC84, #54A0FF, #9B5DE5);
+  background-size: 100% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* ========================================================
+   4. MISSION, VISION, & TEAM SECTION
+   ======================================================== */
+.about-section,
+.team-section {
+  padding: 80px 8%;
+  text-align: center;
+  background: #F7F3FF;
+}
+
+.about-intro h2,
+.team-section h2 {
+  font-size: 38px;
+  margin-bottom: 15px;
+  font-weight: 800;
+  color: #3C3352;
+}
+
+.mv-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.mv-box {
+  flex: 1;
+  background: #FFFFFF;
+  padding: 35px;
+  border-radius: 24px;
+  border: 3px solid var(--clr-kid-card-border);
+  text-align: left;
+  box-shadow: 0 10px 0px #3C3352;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mv-box:hover {
+  transform: translateY(3px);
+  box-shadow: 0 7px 0px #3C3352;
+}
+
+.mv-box h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: var(--clr-primary);
+  font-weight: 800;
+}
+
+.mv-box p {
+  color: var(--clr-kid-text-muted);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 35px;
+  margin-top: 40px;
+}
+
+.member {
+  background: #FFFFFF;
+  padding: 30px 20px;
+  border-radius: 24px;
+  width: 220px;
+  border: 3px solid var(--clr-kid-card-border);
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(165, 94, 234, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.member:hover {
+  transform: translateY(-5px);
+}
+
+.circle-frame {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px auto;
+  display: block;
+  border: 4px solid var(--clr-cyan);
+  box-shadow: 0 4px 10px rgba(116, 185, 255, 0.3);
+}
+
+.team-container .member:nth-child(2n) .circle-frame {
+  border-color: var(--clr-pink);
+  box-shadow: 0 4px 10px rgba(252, 167, 223, 0.4);
+}
+
+.team-container .member:nth-child(3n) .circle-frame {
+  border-color: var(--clr-yellow);
+  box-shadow: 0 4px 10px rgba(255, 223, 0, 0.3);
+}
+
+.member h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #3C3352;
+}
+
+.member p {
+  font-size: 14px;
+  color: var(--clr-kid-text-muted);
+}
+
+/* ========================================================
+   5. UNIFIED GRID LAYOUT
+   ======================================================== */
+.topics-section {
+  padding: 60px 20px;
+  background: var(--clr-kid-bg);
+  min-height: 100vh;
+}
+
+.topics-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.topics-intro .description {
+  color: var(--clr-kid-text-muted);
+  font-size: 20px;
+}
+
+.skills-grid,
+.big-boxes-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Consolidated skill card layout configuration */
+.skill-card {
+  background: var(--clr-kid-card-bg);
+  border-radius: 28px;
+  padding: 35px 30px;
+  text-align: left;
+  position: relative;
+  border: 3px solid var(--clr-kid-card-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 20px rgba(165, 94, 234, 0.04);
+  height: auto;
+  min-height: 460px;
+}
+
+/* Extracted Module Image and Layout Rules */
+.module-img-container {
+  display: flex; 
+  justify-content: center; 
+  margin: 15px 0;
+}
+
+.module-preview-img {
+  max-width: 70%; 
+  height: auto;
+}
+
+.btn-link-centered {
+  text-decoration: none; 
+  display: inline-block; 
+  text-align: center;
+}
+
+/* ========================================================
+   6. MODULE VARIANT COLOURS & BADGES
+   ======================================================== */
+.listening-arcade {
+  border-color: #74B9FF;
+  background-color: #F0F7FF;
+}
+
+.listening-badge {
+  background: #74B9FF;
+  color: #FFFFFF;
+}
+
+.speaking-arcade {
+  border-color: #FF9F87;
+  background-color: #FFF2F0;
+}
+
+.speaking-badge {
+  background: #FF9F87;
+  color: #FFFFFF;
+}
+
+.reading-arcade {
+  border-color: #FFC312;
+  background-color: #FFFDF0;
+}
+
+.reading-badge {
+  background: #FFC312;
+  color: #3C3352;
+}
+
+.writing-arcade {
+  border-color: #1DD1A1;
+  background-color: #F0FFF9;
+}
+
+.writing-badge {
+  background: #1DD1A1;
+  color: #FFFFFF;
+}
+
+/* Specific module category color updates extracted from inline elements */
+.category-listening {
+  background-color: #6C5CE7; 
+  color: white;
+}
+
+.category-speaking {
+  background-color: #FF7675; 
+  color: white;
+}
+
+.category-reading {
+  background-color: #00CEC9; 
+  color: white;
+}
+
+.category-writing {
+  background-color: #FDCB6E; 
+  color: #3C3352;
+}
+
+/* Fallback sequential child mapping */
+.big-boxes-layout div:nth-child(4n+1) {
+  border-color: #74B9FF;
+  background-color: #F0F7FF;
+}
+
+.big-boxes-layout div:nth-child(4n+1) .category {
+  background: #74B9FF;
+  color: #FFFFFF;
+}
+
+.big-boxes-layout div:nth-child(4n+2) {
+  border-color: #FF9F87;
+  background-color: #FFF2F0;
+}
+
+.big-boxes-layout div:nth-child(4n+2) .category {
+  background: #FF9F87;
+  color: #FFFFFF;
+}
+
+.big-boxes-layout div:nth-child(4n+3) {
+  border-color: #FFC312;
+  background-color: #FFFDF0;
+}
+
+.big-boxes-layout div:nth-child(4n+3) .category {
+  background: #FFC312;
+  color: #3C3352;
+}
+
+.big-boxes-layout div:nth-child(4n+4) {
+  border-color: #1DD1A1;
+  background-color: #F0FFF9;
+}
+
+.big-boxes-layout div:nth-child(4n+4) .category {
+  background: #1DD1A1;
+  color: #FFFFFF;
+}
+
+.card-badge,
+.skill-card .category {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.skill-card h3,
+.module-name {
+  font-size: 24px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #3C3352;
+  font-weight: 700;
+}
+
+.game-instruction,
+.module-description {
+  font-size: 15px;
+  color: var(--clr-kid-text-muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.module-description b {
+  color: var(--clr-primary);
+  background: rgba(165, 94, 234, 0.08);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+/* ========================================================
+   7. MINI-GAME MODULE WRAPPER SCREENS
+   ======================================================== */
+/* Consolidated mini-game box setup styles */
+.mini-game-box {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 18px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border: 2px solid var(--clr-kid-card-border);
+  box-shadow: inset 0 2px 5px rgba(165, 94, 234, 0.05);
+}
+
+.game-score {
+  font-size: 13px;
+  text-align: right;
+  color: #FF9F43;
+  font-weight: bold;
+}
+
+.word-display {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 700;
+  margin: 15px 0;
+  color: #3C3352;
+  text-shadow: 0 4px 0px rgba(165, 94, 234, 0.1);
+}
+
+.game-feedback {
+  font-size: 14px;
+  text-align: center;
+  color: #8A7B9F;
+  font-weight: 600;
+}
+
+/* ========================================================
+   8. GAME INTERACTIVE BUTTONS & CONTROLLERS
+   ======================================================== */
+.game-controls,
+.choices-speak {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.game-controls-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.game-btn {
+  flex: 1;
+  padding: 12px 16px;
+  background: #E8F0FE;
+  border: none;
+  color: #4A5568;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 5px 0px #C5D6F7;
+  transition: var(--transition-arcade);
+}
+
+.game-btn:hover {
+  background: #DCE7FC;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0px #C5D6F7;
+}
+
+.game-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0px #C5D6F7;
+}
+
+.btn-action-green {
+  background: #1DD1A1;
+  color: white;
+  box-shadow: 0 5px 0px #10AC84;
+}
+
+.btn-action-green:hover {
+  background: #10AC84;
+  box-shadow: 0 7px 0px #10AC84;
+}
+
+.btn-action-green:active {
+  box-shadow: 0 1px 0px #10AC84;
+}
+
+.btn-action-red {
+  background: #FF6B6B;
+  color: white;
+  box-shadow: 0 5px 0px #EE5253;
+}
+
+.btn-action-red:hover {
+  background: #EE5253;
+  box-shadow: 0 7px 0px #EE5253;
+}
+
+.btn-action-red:active {
+  box-shadow: 0 1px 0px #EE5253;
+}
+
+.btn-responsive,
+.start-learning-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background: var(--clr-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 0px #8442C2;
+  transition: var(--transition-arcade);
+  margin-top: auto;
+  width: 100%;
+}
+
+.btn-responsive:hover,
+.start-learning-btn:hover {
+  background: #B379DD;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0px #8442C2;
+}
+
+.btn-responsive:active,
+.start-learning-btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 1px 0px #8442C2;
+}
+
+/* ========================================================
+   9. SPEAKING ADVENTURE - STACKED BUTTON CONTROLS
+   ======================================================== */
+/* Aligns buttons vertically centered with structured spacing */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Retains compact and clean responsive sizes for actionable buttons */
+.btn-group .game-btn {
+  width: auto;
+  min-width: 140px;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 0;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.inline-center {
+  text-align: center;
+}
+
+.spacing-top-15 {
+  margin-top: 15px;
+}
+
+/* ========================================================
+   10. SITE FOOTER
+   ======================================================== */
+.site-footer {
+  background: #ffffff;
+  padding: 40px 8% 20px 8%;
+  border-top: 2px solid var(--clr-kid-card-border);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footer-brand p {
+  color: var(--clr-kid-text-muted);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-top: 8px;
+}
+
+.footer-links h5 {
+  color: #3C3352;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.footer-links a {
+  color: #8A7B9F;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--clr-primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #A397B4;
+  font-size: 13px;
+}
+
+/* ========================================================
+   11. CHALLENGE MODE LAYOUTS & MINI-GAMES
+   ======================================================== */
+.super-size-card {
+  min-height: auto;
+  padding: 40px 30px;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 12px 24px rgba(60, 51, 82, 0.08);
+}
+
+.game-display-zone {
+  background: #FAF7FF;
+  border: 3px dashed #B983FF;
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.bubble-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  min-height: 60px;
+}
+
+.letter-bubble {
+  background: radial-gradient(circle at 30% 30%, #E3E9FF, #74B9FF);
+  color: white;
+  border: 3px solid #54A0FF;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 0 #2E86DE, inset -4px -4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.1s ease;
+}
+
+.letter-bubble:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #2E86DE;
+}
+
+.letter-bubble.used {
+  background: #DFDCE6;
+  border-color: #C4C1CC;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.big-challenge-img {
+  width: 100%;
+  max-width: 280px;
+  height: 180px;
+  object-fit: contain;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #F1EAFF;
+  margin: 0 auto 15px auto;
+  display: block;
+}
+
+.audio-letter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 26px;
+  color: var(--clr-pink);
+  margin: 60px 0 20px 0;
+}
+
+/* Fix grid formatting for Pinoy Henyo button columns */
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* Correct original overlapping button rule values */
+.button-group button.game-btn {
+  margin: 0;
+  width: 100%;
+  background: var(--clr-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button-group button.game-btn:hover {
+  background-color: #8442C2;
+}
+
+/* Clue button accent styling overrides */
+.btn-action-purple {
+  background: var(--clr-purple);
+  color: #FFFFFF;
+  box-shadow: 0 5px 0px #9254DE;
+  margin: 12px 0;
+  width: 100%;
+}
+
+.btn-action-purple:hover {
+  background: #B379DD;
+  box-shadow: 0 7px 0px #9254DE;
+  transform: translateY(-2px);
+}
+
+.btn-action-purple:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0px #9254DE;
+}
+
+/* ========================================================
+   12. BACK BUTTON COMPONENT (3D ARCADE STYLE)
+   ======================================================== */
+.back-btn-container {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--clr-purple);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 0px #9059D4;
+  transition: var(--transition-arcade);
+}
+
+.back-btn:hover {
+  background: #A366FF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px #9059D4;
+}
+
+/* ========================================================
+   13. LISTENING ADVENTURE CUSTOM STYLES
+   ======================================================== */
+.listening-adventure-layout {
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.listening-page-card {
+  background: var(--clr-kid-card-bg);
+  border-radius: 28px;
+  padding: 40px;
+  border: 3px solid var(--clr-kid-card-border);
+  box-shadow: 0 10px 20px rgba(165, 94, 234, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.border-purple {
+  border-left: 12px solid var(--clr-purple);
+}
+
+.border-pink {
+  border-left: 12px solid var(--clr-pink);
+}
+
+.border-cyan {
+  border-left: 12px solid var(--clr-cyan);
+}
+
+.border-yellow {
+  border-left: 12px solid var(--clr-yellow);
+}
+
+.border-primary {
+  border-left: 12px solid var(--clr-primary);
+}
+
+.border-green {
+  border-left: 12px solid #1DD1A1;
+}
+
+.listening-title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.listening-text {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--clr-kid-text-muted);
+}
+
+.listening-img {
+  display: block;
+  width: 50%;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+/* ========================================================
+   14. SPEAKER BUTTON
+   ======================================================== */
+.speaker-btn {
+  background: #E4D4FF;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+.speaker-btn:hover {
+  background: var(--clr-primary);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* ========================================================
+   15. CONTACTS CARD & FEEDBACK FORM EXTENSIONS
+   ======================================================== */
+/* Centers the remaining box horizontally within the flexbox viewport grid */
+.mv-container .centered-box {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 550px;
+  width: 100%;
+}
+
+/* Ensures nested block parameters align clean at the center */
+.mv-container .centered-box p {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.feedback-form-container {
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+  background: #FFFFFF;
+  cursor: default;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #3C3352;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 3px solid var(--clr-kid-card-border);
+  border-radius: 16px;
+  font-size: 15px;
+  font-family: 'Fredoka', sans-serif;
+  color: #3C3352;
+  background-color: #FAF7FF;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 4px rgba(165, 94, 234, 0.15);
+  background-color: #FFFFFF;
+}
+
+.btn-submit {
+  display: inline-block;
+  background: var(--clr-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 0px #3C3352;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-submit:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0px #3C3352;
+}
+
+/* Pastel Buttons */
+.controls button {
+  border: none;
+  padding: 10px 18px;
+  margin: 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  color: white;
+}
+
+/* Lavender Undo Colors */
+.controls button:nth-child(1) {
+  background-color: #A29BFE;
+}
+
+/* Salmon Clear Colors */
+.controls button:nth-child(2) {
+  background-color: #FF7675;
+}
+
+.controls button:hover {
+  opacity: 0.8;
+}
+
+/* ========================================================
+   16. CARDS GRID LAYOUT FOR CHALLENGE ARENA
+   ======================================================== */
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid #E4D4FF;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tracing-canvas {
+  display: block;
+  margin: 15px auto;
+  width: 100%;
+  height: 200px;
+  background-color: #f9f9f9;
+  border: 2px dashed #B8E1FF;
+  border-radius: 10px;
+}
+
+/* ========================================================
+   17. MODAL LOGIN LAYOUT STYLES
+   ======================================================== */
+.display-flex {
+  display: flex;
+}
+
+.dynamic-modal {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-title {
+  color: var(--clr-primary);
+}
+
+.modal-subtitle {
+  color: var(--clr-kid-text-muted);
+}
+
+.modal-input,
+.modal-select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #E4D4FF;
+  border-radius: 12px;
+}
+
+.modal-select {
+  background: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(60, 51, 82, 0.7); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; 
+}
+
+/* ========================================================
+   18. ELEMENTS FROM GRAND ADVENTURE PAGE
+   ======================================================== */
+.study-library-cta-box {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.study-library-btn-gradient {
+  text-decoration: none;
+  display: inline-block;
+  background: linear-gradient(135deg, #ff9f43, #ff5252);
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.4);
+}
+
+/* ========================================================
+   19. READ ZONE EXTRACTED INLINE STYLES
+   ======================================================== */
+#read-game-title {
+  text-align: center;
+}
+
+#noun-hunt-container {
+  margin: 30px 0;
+  font-size: 1.8rem;
+  line-height: 3;
+  text-align: center;
+}
+
+#read-feedback {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#btn-next {
+  display: none;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+/* ========================================================
+   20. MEDIA QUERIES (MOBILE RESPONSIVENESS MATRIX)
+   ======================================================== */
+
+/* Handles Small Desktops, Foldables, and Mid-sized Tablets */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5%;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    margin-left: 0;
+    margin-top: 40px;
+    max-width: 60%;
+  }
+
+  .mv-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+}
+
+/* Target Viewport for Smartphones and Compact Phone Layouts */
+@media (max-width: 768px) {
+  /* 1. Hide the horizontal links layout row inside the header navbar */
+  .nav-links {
+    display: none;
+  }
+
+  /* 2. Seamlessly reveal Home, About Us, and Contacts items inside the Sidebar Menu drawer */
+  .mobile-only-nav {
+    display: flex;
+  }
+
+  /* 3. Flexible layout adaptation adjustments for columns across the app */
+  .skills-grid,
+  .big-boxes-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .skill-card {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+
+  .shining-text,
+  .topics-intro .title {
+    font-size: 32px;
+  }
+
+  .about-intro h2,
+  .team-section h2 {
+    font-size: 28px;
+  }
+
+  .word-display {
+    font-size: 38px;
+  }
+
+  .game-controls,
+  .choices-speak {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .audio-letter-grid {
+    grid-template-columns: 1fr;
+  }
+}

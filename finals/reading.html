@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Adventure Land</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/JavaScript" src="script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      Learn4Kids
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-tab">Home</a>
+      <a href="#about" class="nav-tab">About Us</a>
+      <a href="#contacts" class="nav-tab">Contacts</a>
+    </div>
+
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      ☰
+    </button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="sidebar" id="sidebarMenu">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+
+    <div class="sidebar-links">
+      <div class="mobile-only-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="#about" onclick="toggleSidebar()">ℹ️ About Us</a>
+        <a href="#contacts" onclick="toggleSidebar()">📞 Contacts</a>
+      </div>
+
+      <a href="topic.html" id="link-play">🎮 Play Zone</a>
+      <a href="lesson.html" id="link-study">📚 Study Library</a>
+      <a href="challenge.html" id="link-challenge">⚔️ Challenge Mode</a>
+    </div>
+  </div>
+
+
+  <main id="topics" class="topics-section">
+    <div class="topics-intro">
+      <h2 class="title">✨ Reading Adventure Land ✨</h2>
+      <p class="description">Read the nouns in each sentence... and click on them to find them!</p>
+    </div>
+
+    <div class="listening-adventure-layout">
+      <h2 id="read-game-title" class="title">📖 Reading Station: Noun Hunt</h2>
+
+      <div id="game-zone" class="listening-page-card border-cyan">
+        <h3 class="listening-title" id="level-title">Loading...</h3>
+        <p class="listening-text">Click the naming words (nouns)!</p>
+
+        <div id="noun-hunt-container"></div>
+        <div id="read-feedback"></div>
+
+        <button id="btn-next" class="game-btn btn-action-purple" onclick="nextLevel()">Next Level ➔</button>
+      </div>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="#" id="custom-back-btn" class="back-btn">← Go Back</a>
+    </div>
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Learn4Kids</div>
+        <p>Providing high-quality English Language Arts structures for elementary schools worldwide.</p>
+      </div>
+
+      <div class="logo">
+        <img src="logo.png" class="circle-frame" alt="">
+      </div>
+
+      <div class="contacts">
+        <h5>Explore Links</h5>
+        <ul class="footer-links">
+          <li><a href="contacts.html">📞 Contacts</a></li>
+          <li><a href="faqs.html">❓ FAQs</a></li>
+          <li><a href="feedbackform.html">💬 Feedback Form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Learn4Kids ELA Frameworks. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
